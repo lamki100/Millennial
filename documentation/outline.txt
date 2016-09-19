@@ -1,0 +1,81 @@
+Trended Spec
+
+View
+
+- Home
+    - Trending Bets in various Catagories
+        - Biggest jackpots
+        - Rising / Hot
+        - By genre - music / tv / famous people / sports / weather / politics
+        - Local / in your area
+    - Bet
+        - Jackpot size
+        - Title
+        - Participants
+    - If Logged in
+        - Watchlist
+        - Recommended
+        - Friends recent bets that are still open
+- Register
+    - Register form
+        - Email
+        - Username
+        - Full name
+        - Password
+- Login
+    - Forgot your id?
+    - Login form
+        - Username / email
+        - Password
+- Profile
+    - Current funds
+    - Transfer funds to / from account
+    - Current participating bets
+    - Created bets
+    - Recent ideas (comments on bets)
+- Settings
+    - Banking information
+        - Account/Routing Number
+        - Debit card
+        - Recurring withdrawals
+    - Account information
+        - Email
+        - Phone
+        - Password
+        - Username
+        - Full name
+    - Notifications
+        - Email
+        - Push
+        - Followed user placed a bet
+        - Participating bet is closed
+        - Participating bet outcomes, your payout
+- Bet
+    - Current jackpot size
+    - Friends participating
+    - Outcomes
+    - State - Open, Closed, Final Results
+    - Place a Bet
+        - Wager
+        - Desired outcomes
+- Create a bet
+    - Title
+    - Type of bet
+        - Continuous
+        - Discrete
+    - Outcomes payouts - low risk low reward / high risk high reward
+    - Initializer fee
+- Header
+    - Home
+    - Search
+    - If logged in
+        - Profile
+        - Notifications
+    - else
+        - Register
+        - Login
+- Footer
+    - Legal
+    - Social Media
+    - Jobs
+    - Contact
