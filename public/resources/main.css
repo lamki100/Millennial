@@ -1,17 +1,17 @@
 @font-face {
-  font-family: Gotham;
+  font-family: "Gotham";
   src: url("fonts/gotham-book.otf") format('opentype');
   font-weight: 400;
 }
 
 @font-face {
-    font-family: Gotham;
+    font-family: "Gotham";
     src: url("fonts/gotham-bold.otf") format('opentype');
     font-weight: 600;
 }
 
 @font-face {
-    font-family: Gotham;
+    font-family: "Gotham";
     src: url("fonts/gotham-light.otf") format('opentype');
     font-weight: 300;
 }
@@ -61,7 +61,7 @@ body {
   margin: 0 auto;
 }
 
-#header, #master {
+#header, #master, #center {
   max-width: 1000px;
 }
 
@@ -109,6 +109,7 @@ body {
   position: absolute;
   top: 40px;
   bottom: 0;
+  width: 85%;
 }
 
 .error {

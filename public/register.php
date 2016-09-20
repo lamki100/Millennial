@@ -1,7 +1,7 @@
 <?php include "../inc/header.php" ?>
 
 <div id="center">
-  <div>
+  <div style="width: 100%">
     <h1>Register a new Trended ID</h1>
     <p>A Trended ID allows you to buy and/or subscribe to Trended products and services, shop in the Asset Store and participate in the Trended community.</p>
     <form onsubmit='register(); return false'>
