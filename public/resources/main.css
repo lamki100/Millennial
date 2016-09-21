@@ -89,16 +89,16 @@ body {
   height: 0;
   padding: 24px;
   cursor: pointer;
-  transition: width .4s, padding-left .4s, background-size .4s;
+  transition: width .4s, padding-left .4s, background-size .2s;
   font-size: 13px;
   line-height: normal !important;
 }
 
 #header-search:focus {
-  width: 170px;
-  padding-left: 35px;
+  width: 180px;
+  padding-left: 40px;
   cursor: auto;
-  background-size: 30px 30px;
+  /*background-size: 28px 28px;*/
 }
 
 #header-search::-webkit-input-placeholder {
@@ -115,7 +115,6 @@ body {
   text-align: left;
   width: 234px;
   transition: height .4s, padding-top .4s;
-  /*border-top: 1px solid #555;*/
   background-color: rgb(20,20,20);
   padding: 0 20px;
   overflow: hidden;
@@ -171,7 +170,7 @@ body {
 .toggle-option {
   width: 100% !important;
   margin: 0 !important;
-  border-color: transparent !important;
+  border-color: #222 !important;
   line-height: 38px !important;
 }
 
@@ -182,7 +181,7 @@ body {
 
 form {
   overflow: hidden;
-  transition: height .5s;
+  transition: height .4s;
 }
 
 input, .toggle-option {

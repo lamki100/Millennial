@@ -7,21 +7,21 @@
       <div class="toggle-option" onclick="toggle(this); toggleLogin(this)">Login</div>
     </div>
 
-    <form onsubmit='register(); return false' id="register-form" style="height: 165px">
-      <input type='text' placeholder='Username' spellcheck='false' autocomplete='off' maxlength='40' id='register-username'>
-      <input type='password' placeholder='Password' spellcheck='false' maxlength='40' id='register-password'><br>
-      <input type='text' placeholder='Full Name' spellcheck='false' autocomplete='off' maxlength='40' id='register-fullname'>
-      <input type='text' placeholder='Email' spellcheck='false' autocomplete='off' maxlength='40' id='register-email'><br>
-      <input type='submit' value='Register'><br>
-      <a href='terms.php'>Terms & Conditions</a>
-      <p id='register-message' class='message' style="display:block">&nbsp;</p>
-    </form>
-
     <form onsubmit='login(); return false' id="login-form" style="height: 0px">
       <input type='text' placeholder='Username' spellcheck='false' autocomplete='off' maxlength='40' id='login-username'>
       <input type='password' placeholder='Password' spellcheck='false' maxlength='40' id='login-password'>
       <input type='submit' value='Login'> <p id='login-message' class='message'></p><br>
       <a href="forgot.php">I can not access my account</a>
+    </form>
+
+    <form onsubmit='register(); return false' id="register-form" style="height: 165px">
+      <input type='text' placeholder='Username' spellcheck='false' autocomplete='off' maxlength='40' id='register-username'>
+      <input type='password' placeholder='Password' spellcheck='false' maxlength='40' id='register-password'><br>
+      <input type='text' placeholder='Email' spellcheck='false' autocomplete='off' maxlength='40' id='register-email'>
+      <input type='text' placeholder='Full Name' spellcheck='false' autocomplete='off' maxlength='40' id='register-fullname'><br>
+      <input type='submit' value='Register'><br>
+      <a href='terms.php'>Terms & Conditions</a>
+      <p id='register-message' class='message' style="display:block">&nbsp;</p>
     </form>
   </div>
 </div>
