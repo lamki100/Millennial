@@ -3,8 +3,8 @@
 <div id="center">
   <div style="width: 100%">
     <div class="toggle">
-      <div class="toggle-option selected" onclick="toggle(this)">Register</div>
-      <div class="toggle-option" onclick="toggle(this)">Login</div>
+      <div class="toggle-option selected" onclick="toggle(this); toggleLogin(this)">Register</div>
+      <div class="toggle-option" onclick="toggle(this); toggleLogin(this)">Login</div>
     </div>
 
     <form onsubmit='register(); return false' id="register-form" style="height: 165px">
@@ -16,7 +16,7 @@
       <a href='terms.php'>Terms & Conditions</a>
       <p id='register-message' class='message' style="display:block">&nbsp;</p>
     </form>
-    
+
     <form onsubmit='login(); return false' id="login-form" style="height: 0px">
       <input type='text' placeholder='Username' spellcheck='false' autocomplete='off' maxlength='40' id='login-username'>
       <input type='password' placeholder='Password' spellcheck='false' maxlength='40' id='login-password'>
@@ -29,10 +29,7 @@
 <script>
   document.getElementById("register-username").focus();
 
-  function toggle(sender) {
-    for (var i=0; i < sender.parentNode.children.length; i++) sender.parentNode.children[i].className='toggle-option';
-    sender.className = 'toggle-option selected';
-
+  function toggleLogin(sender) {
     if (sender.innerHTML == "Register") {
       document.getElementById("register-username").focus();
       document.getElementById("register-form").style.height = "165px"

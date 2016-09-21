@@ -27,6 +27,11 @@
         results.style.paddingTop = "0px";
       }
     }
+
+    function toggle(sender) {
+      for (var i=0; i < sender.parentNode.children.length; i++) sender.parentNode.children[i].className='toggle-option';
+      sender.className = 'toggle-option selected';
+    }
   </script>
 </body>
 </html>
