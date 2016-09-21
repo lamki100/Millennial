@@ -13,5 +13,5 @@ if ($username && $password && $email && $fullname) {
     $db->query("INSERT INTO accounts VALUES (null, '$username', '$password', '$email', '$fullname', '$token')");
     setCookie("token", $token, time()+3600*24*365, "/");
     echo json_encode(array("status"=>"ok"));
-  } else echo json_encode(array("status"=>"failed", "message"=>"Sorry, that username is taken."));
-} else echo json_encode(array("status"=>"failed", "message"=>"Please fill in all fields."));
+  } else echo json_encode(array("status"=>"failed", "message"=>"Sorry, that username is taken"));
+} else echo json_encode(array("status"=>"failed", "message"=>"Please fill in all fields"));

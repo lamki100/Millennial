@@ -2,8 +2,8 @@
 
 <div id="center">
   <div style="width: 100%">
-    <h1>Homepage</h1>
-    <p><?php if ($account) echo "You are now signed in."; else echo "You are currently not signed in."; ?></a>
+    <h1>Settings</h1>
+    <p><a href="logout.php">Sign out</a></p>
   </div>
 </div>
 

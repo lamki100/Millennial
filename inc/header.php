@@ -19,10 +19,11 @@ if ($token) {
   <link rel='stylesheet' href='resources/main.css'>
 </head>
 <body>
-  <div id="header-container">
-    <div id="header">
-      <a style="float:left; margin:0; letter-spacing:5px; font-weight: 600;" href="/">trende<span style='letter-spacing:0'>d</span></a>
-      <input type='text' placeholder='Search' spellcheck='false' autocomplete='off' maxlength='30' id='search' onblur="this.value=''"><?php if ($account) echo "<a href='profile.php'>".$account["username"]."</a><a href='logout.php'>Logout</a>"; else echo "<a href='register.php'>Register</a><a href='login.php'>Login</a>"; ?>
-    </div>
+  <div id="header">
+    <a href="/" id="header-logo">TRENDED</a>
+    <input type='text' spellcheck='false' autocomplete='off' onblur="this.value=''; search()" id="header-search" placeholder="Search" oninput="search()">
+    <div id="header-results"></div>
+    <a href='<?php if ($account) echo $account["username"].".php"; else echo "login.php" ?>' id="header-account"></a>
+    <?php if ($account) echo "<a href='settings.php' id='header-settings'></a>" ?>
   </div>
   <div id="master">

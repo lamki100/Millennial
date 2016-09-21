@@ -1,4 +1,10 @@
 @font-face {
+    font-family: "Aliens";
+    src: url("fonts/aliens.ttf") format('truetype');
+    font-weight: 400;
+}
+
+@font-face {
   font-family: "Gotham";
   src: url("fonts/gotham-book.otf") format('opentype');
   font-weight: 400;
@@ -49,57 +55,89 @@ body {
   font-size: 13px;
 }
 
-#header-container {
-  background-color: rgba(255,255,255,.05);
-  border-top: 3px solid rgba(255,255,255,0.3);
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+#header, #master, #center {
+  max-width: 1100px;
+  width: 80%;
 }
 
 #header {
+  margin: 25px auto;
   text-align: right;
-  width: 85%;
-  margin: 0 auto;
+  border-bottom: 2px solid #555;
+  padding-bottom: 1px;
 }
 
-#header, #master, #center {
-  max-width: 1000px;
+#header a {
+  text-decoration: none;
+  display: inline-block;
+  vertical-align: top;
 }
 
-#header a, #search {
-  border-bottom: 1px solid transparent !important;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 300;
-  margin-left: 18px;
-  padding: 10px 0;
-  font-size: 11px;
-  transition: border-color .1s, width .2s;
+#header-logo {
+  float: left;
+  font-family: "Aliens";
+  font-size: 46px;
 }
 
-#search {
-  border: 0;
+#header-search {
   margin: 0;
-  width: 48px;
+  margin-top: -5px;
+  border: 0;
+  background: url("images/search.png") left center no-repeat;
+  background-size: 35px 35px;
+  width: 0;
+  height: 0;
+  padding: 24px;
   cursor: pointer;
-  text-align: left;
+  transition: width .4s, padding-left .4s, background-size .4s;
+  font-size: 13px;
+  line-height: normal !important;
 }
 
-#search:focus {
-  cursor: text;
-  width: 160px;
+#header-search:focus {
+  width: 170px;
+  padding-left: 35px;
+  cursor: auto;
+  background-size: 30px 30px;
 }
 
-#search::-webkit-input-placeholder {
+#header-search::-webkit-input-placeholder {
   color: white;
 }
 
-#header a:hover, #search:hover, #search:focus {
-  border-color: rgba(255,255,255, 0.3) !important;
-  text-decoration: none;
+#header-results {
+  display: inline-block;
+  position: absolute;
+  margin-left: -190px;
+  margin-top: 47px;
+  background-color: #1a1a1a;
+  width: 200px;
+  text-align: left;
+  width: 234px;
+  transition: height .4s, padding-top .4s;
+  /*border-top: 1px solid #555;*/
+  background-color: rgb(20,20,20);
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+#header-account {
+  margin-top: -5px;
+  margin-left: -3px;
+  padding: 24px;
+  background: url("images/account.png") center center no-repeat;
+  background-size: contain;
+}
+
+#header-settings {
+  margin-top: -1px;
+  margin-left: 8px;
+  padding: 20.5px;
+  background: url("images/settings.png") center center no-repeat;
+  background-size: contain;
 }
 
 #master {
-  width: 85%;
   margin: 0 auto;
 }
 
@@ -107,13 +145,13 @@ body {
   display: flex;
   align-items: center;
   position: absolute;
-  top: 40px;
-  bottom: 0;
-  width: 85%;
+  top: 70px;
+  bottom: 40px;
+  text-align: center;
 }
 
 .error {
-  color: #f34 !important;
+  color: #f44 !important;
 }
 
 .message {
@@ -124,71 +162,69 @@ body {
 
 .toggle {
   font-size: 13px;
-  display: flex;
+  display: inline-flex;
   justify-content: space-between;
-  margin-bottom: 5px;
-  width: 150px;
+  margin-bottom: 12px;
+  width: 230px;
 }
 
 .toggle-option {
-  border: 1px solid rgba(255,255,255,.1);
-  padding: 10px;
-  width: 100%;
-  cursor: pointer;
-  transition: background-color .2s, border-color .3s;
-  text-align: center;
-}
-
-.toggle-option:hover {
-  border-color: rgba(255,255,255, .15);
+  width: 100% !important;
+  margin: 0 !important;
+  border-color: transparent !important;
+  line-height: 38px !important;
 }
 
 .toggle .selected {
-  border-color: rgba(0,255,50, .8);
+  border-color: rgba(0,255,50, .8) !important;
   background-color: rgba(0,255,50, .1);
 }
 
-label {
-  font-size: 13px;
-  margin-right: 5px;
+form {
+  overflow: hidden;
+  transition: height .5s;
 }
 
-input {
+input, .toggle-option {
+  font-size: 12px;
   color: white;
-  border: 1px solid rgba(255,255,255,.1);
-  padding: 10px 10px;
-  margin-bottom: 7px;
-  margin-right: 7px;
+  border: 1px solid #555;
+  padding: 0 14px;
+  line-height: 18px;
+  height: 40px;
+  margin-bottom: 9px;
   display: inline-block;
   width: 200px;
-  font-size: 12px;
+  transition: background-color .4s, border-color .4s;
 }
 
-input[type='submit'] {
+input[type='submit'], .toggle-option {
   width: auto;
   margin-bottom: 10px;
   font-size: 11px;
-  letter-spacing: 2px;
+  letter-spacing: 2.8px;
   text-transform: uppercase;
   font-weight: 300;
-  background-color: rgba(255,255,255,0.03);
-  border-color: rgba(255,255,255,.5);
-  padding: 10px 20px;
+  background-color: rgba(255,255,255,.02);
+  border-color: #aaa;
+  padding: 0 20px;
   cursor: pointer;
-  transition: background-color .1s;
+}
+
+input:focus {
+  border-color: #aaa;
 }
 
 input[type='submit']:hover {
-  background-color: rgba(255,255,255,.08);
+  background-color: rgba(255,255,255,.1);
 }
 
 h1 {
-  margin-bottom: 10px;
-  font-size: 26px;
+  margin-bottom: 1px;
+  font-size: 39px;
+  letter-spacing: -.6px;
   font-weight: 300;
-  border-bottom: 1px solid #aaa;
-  padding-bottom: 10px;
-  display: block;
+  font-family: "Gotham";
 }
 
 h2 {
@@ -201,12 +237,13 @@ h2 {
 
 p {
   line-height: 1.5;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 a {
   cursor: pointer;
   color: white;
+  text-decoration: underline;
 }
 
 a:hover {
@@ -214,5 +251,5 @@ a:hover {
 }
 
 ::-webkit-input-placeholder {
-  color: rgba(255,255,255,.6);
+  color: rgba(255,255,255,.7);
 }
