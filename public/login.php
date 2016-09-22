@@ -10,7 +10,7 @@
     <form onsubmit='login(); return false' id="login-form" style="height: 0px">
       <input type='text' placeholder='Username' spellcheck='false' autocomplete='off' maxlength='40' id='login-username'>
       <input type='password' placeholder='Password' spellcheck='false' maxlength='40' id='login-password'>
-      <input type='submit' value='Login'> <p id='login-message' class='message'></p><br>
+      <input type='submit' value='Login'><p id='login-message' class='message'></p><br>
       <a href="forgot.php">I can not access my account</a>
     </form>
 
@@ -19,9 +19,8 @@
       <input type='password' placeholder='Password' spellcheck='false' maxlength='40' id='register-password'><br>
       <input type='text' placeholder='Email' spellcheck='false' autocomplete='off' maxlength='40' id='register-email'>
       <input type='text' placeholder='Full Name' spellcheck='false' autocomplete='off' maxlength='40' id='register-fullname'><br>
-      <input type='submit' value='Register'><br>
+      <input type='submit' value='Register'><p id='register-message' class='message'></p><br>
       <a href='terms.php'>Terms & Conditions</a>
-      <p id='register-message' class='message' style="display:block">&nbsp;</p>
     </form>
   </div>
 </div>
@@ -51,7 +50,7 @@
         var message = document.getElementById("login-message")
         message.innerHTML = r["message"]
         message.className = "message error"
-        setTimeout(function() { message.className = "message" }, 1500)
+        setTimeout(function() { message.className = "message" }, 1100)
       }
     })
   }
@@ -69,7 +68,7 @@
         var message = document.getElementById("register-message")
         message.innerHTML = r["message"]
         message.className = "message error"
-        setTimeout(function() { message.className = "message" }, 1500)
+        setTimeout(function() { message.className = "message" }, 1100)
       }
     })
   }

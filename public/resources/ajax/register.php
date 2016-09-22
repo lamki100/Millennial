@@ -2,6 +2,7 @@
 
 include "../../../inc/db.php";
 
+// TODO FILTER DATA FOR SQL INJECTION AND THE LIKE
 $username = isset($_POST["username"]) ? strtolower(trim($_POST["username"])) : null;
 $password = isset($_POST["password"]) ? trim($_POST["password"]) : null;
 $email = isset($_POST["email"]) ? strtolower(trim($_POST["email"])) : null;
@@ -14,4 +15,4 @@ if ($username && $password && $email && $fullname) {
     setCookie("token", $token, time()+3600*24*365, "/");
     echo json_encode(array("status"=>"ok"));
   } else echo json_encode(array("status"=>"failed", "message"=>"Sorry, that username is taken"));
-} else echo json_encode(array("status"=>"failed", "message"=>"Please fill in all fields"));
+} else echo json_encode(array("status"=>"failed", "message"=>"Please fill in all fields."));
