@@ -3,8 +3,8 @@
 <div id="center">
   <div style="width: 100%">
     <div class="toggle">
-      <div class="toggle-option selected" onclick="toggle(this); toggleLogin(this)">Register</div>
-      <div class="toggle-option" onclick="toggle(this); toggleLogin(this)">Login</div>
+      <div class="option selected" onclick="toggle(this); toggleLogin(this)">Register</div>
+      <div class="option" onclick="toggle(this); toggleLogin(this)">Login</div>
     </div>
 
     <form onsubmit='login(); return false' id="login-form" style="height: 0px">

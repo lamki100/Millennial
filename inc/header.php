@@ -12,14 +12,14 @@ if ($token) {
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Profile - Trender</title>
+  <title>Profile - Trended</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <link rel='stylesheet' href='/resources/main.css'>
 </head>
 <body>
   <div id="header">
-    <a href="/" id="header-logo">TRENDER</a>
+    <a href="/" id="header-logo">TRENDED</a>
     <div id="header-results"></div>
     <input type='text' spellcheck='false' autocomplete='off' onblur="this.value=''; search()" id="header-search" placeholder="Search" oninput="search()">
     <a href='<?php if ($account) echo "/u/".$account["username"]."/"; else echo "/login/" ?>' id="header-account"></a>

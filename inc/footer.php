@@ -29,8 +29,8 @@
     }
 
     function toggle(sender) {
-      for (var i=0; i < sender.parentNode.children.length; i++) sender.parentNode.children[i].className='toggle-option';
-      sender.className = 'toggle-option selected';
+      for (var i=0; i < sender.parentNode.children.length; i++) sender.parentNode.children[i].className='option';
+      sender.className = 'option selected';
     }
   </script>
 </body>
