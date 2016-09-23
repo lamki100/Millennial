@@ -95,7 +95,7 @@ body {
 
 #header-search:focus {
   width: 200px;
-  padding-left: 40px;
+  padding-left: 43px;
   cursor: auto;
 }
 
@@ -116,7 +116,6 @@ body {
   overflow: hidden;
   font-family: "Gotham";
   text-transform: uppercase;
-  font-weight: 600;
 }
 
 #header-account {
@@ -222,6 +221,10 @@ a {
   cursor: pointer;
   color: white;
   text-decoration: underline;
+}
+
+b {
+  font-weight: 600;
 }
 
 ::-webkit-input-placeholder {
