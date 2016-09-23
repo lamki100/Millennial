@@ -63,7 +63,7 @@ body {
   margin: 23px auto 0px;
   text-align: right;
   border-bottom: 1px solid rgba(255,255,255,.2);
-  padding: 0 7px 4px;
+  padding: 0 2px 3px;
 }
 
 #header a {
@@ -88,13 +88,13 @@ body {
   height: 0;
   padding: 24px;
   cursor: pointer;
-  transition: width .2s, padding-left .2s;
+  transition: width .3s, padding-left .3s;
   font-size: 13px;
   line-height: normal !important;
 }
 
 #header-search:focus {
-  width: 180px;
+  width: 200px;
   padding-left: 40px;
   cursor: auto;
 }
@@ -106,15 +106,17 @@ body {
 #header-results {
   display: inline-block;
   position: absolute;
-  margin-left: 20px;
   margin-top: 47px;
   background-color: #222;
-  width: 207px;
+  width: 210px;
   text-align: left;
   transition: height .4s, padding-top .4s;
-  background-color: rgba(255,255,255,.2);
+  background-color: rgba(255,255,255,.05);
   padding: 0 19px;
   overflow: hidden;
+  font-family: "Gotham";
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
 #header-account {
@@ -240,6 +242,9 @@ a {
 
 #settings-sidebar {
   width: 175px;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 35px;
 }
 
 #settings-sidebar .option {
@@ -266,4 +271,9 @@ a {
   color: white;
   font-weight: 600;
   padding-left: 12px;
+}
+
+#settings-body {
+  display: inline-block;
+  margin-top: 56px;
 }

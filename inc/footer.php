@@ -18,13 +18,15 @@
       var search = document.getElementById("header-search").value.trim()
       var results = document.getElementById("header-results")
 
-      results.innerHTML = "Searching: " + search
+      results.innerHTML = "Results: " + search
       if (search != "") {
-        results.style.height = "300px";
-        results.style.paddingTop = "20px";
+        results.style.height = "300px"
+        results.style.paddingTop = "20px"
+        results.style.borderBottom = "2px solid rgba(255,255,255,.5)"
       } else {
-        results.style.height = "0";
-        results.style.paddingTop = "0px";
+        results.style.height = "0"
+        results.style.paddingTop = "0"
+        results.style.borderBottom = "0"
       }
     }
 
