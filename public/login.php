@@ -11,7 +11,7 @@
       <input type='text' placeholder='Username' spellcheck='false' autocomplete='off' maxlength='40' id='login-username'>
       <input type='password' placeholder='Password' spellcheck='false' maxlength='40' id='login-password'>
       <input type='submit' value='Login'><p id='login-message' class='message'></p><br>
-      <a href="forgot.php">I can not access my account</a>
+      <a href="/forgot/">I can not access my account</a>
     </form>
 
     <form onsubmit='register(); return false' id="register-form" style="height: 165px">
@@ -20,7 +20,7 @@
       <input type='text' placeholder='Email' spellcheck='false' autocomplete='off' maxlength='40' id='register-email'>
       <input type='text' placeholder='Full Name' spellcheck='false' autocomplete='off' maxlength='40' id='register-fullname'><br>
       <input type='submit' value='Register'><p id='register-message' class='message'></p><br>
-      <a href='terms.php'>Terms & Conditions</a>
+      <a href='/terms/'>Terms & Conditions</a>
     </form>
   </div>
 </div>

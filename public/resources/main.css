@@ -49,7 +49,8 @@
 
 body {
   font-family: "Open", "Helvetica Neue", sans-serif;
-  background-color: rgb(15,15,15);
+  /*background-color: rgb(30,30,30);*/
+  background-color: #222;
   color: white;
   -webkit-font-smoothing: antialiased;
   font-size: 13px;
@@ -63,7 +64,7 @@ body {
 #header {
   margin: 25px auto;
   text-align: right;
-  border-bottom: 1px solid #888;
+  border-bottom: 1px solid rgba(255,255,255,.5);
   padding-bottom: 3px;
 }
 
@@ -89,7 +90,7 @@ body {
   height: 0;
   padding: 24px;
   cursor: pointer;
-  transition: width .35s, padding-left .35s;
+  transition: width .2s, padding-left .2s;
   font-size: 13px;
   line-height: normal !important;
 }
@@ -107,14 +108,14 @@ body {
 #header-results {
   display: inline-block;
   position: absolute;
-  margin-left: -13px;
+  margin-left: 20px;
   margin-top: 47px;
   background-color: #222;
-  width: 240px;
+  width: 207px;
   text-align: left;
   transition: height .4s, padding-top .4s;
-  background-color: rgb(20,20,20);
-  padding: 0 20px;
+  background-color: rgba(255,255,255,.2);
+  padding: 0 19px;
   overflow: hidden;
 }
 
@@ -175,7 +176,11 @@ body {
 }
 
 .toggle .selected {
-  border-color: rgba(0,255,50, .9) !important;
+  border-color: rgba(0,255,50, 1) !important;
+  background-color: rgba(0,255,50, .2);
+}
+
+.toggle .selected:hover {
   background-color: rgba(0,255,50, .2);
 }
 
@@ -189,14 +194,14 @@ form {
 input, .toggle-option {
   font-size: 12px;
   color: white;
-  border: 1px solid #666;
+  border: 1px solid rgba(255,255,255,.8);
   padding: 0 14px;
   line-height: 18px;
   height: 40px;
   margin-bottom: 9px;
   display: inline-block;
   width: 200px;
-  transition: background-color .2s, border-color .2s;
+  /*transition: border-color .15s;*/
 }
 
 input[type='submit'], .toggle-option {
@@ -210,28 +215,16 @@ input[type='submit'], .toggle-option {
   cursor: pointer;
 }
 
-input:focus, input[type='submit'] {
-  border-color: #ccc;
-}
-
-input[type='submit']:hover {
-  background-color: rgba(255,255,255,.1);
+input[type='submit']:hover, .toggle-option:hover {
+  background-color: rgba(255,255,255,.05);
 }
 
 h1 {
-  margin-bottom: 1px;
+  margin-bottom: 3px;
   font-size: 39px;
   letter-spacing: -.6px;
   font-weight: 300;
   font-family: "Gotham";
-}
-
-h2 {
-  margin-bottom: 18px;
-  font-size: 13px;
-  font-weight: 300;
-  letter-spacing: 1.4px;
-  text-transform: lowercase;
 }
 
 p {

@@ -2,8 +2,8 @@
 
 <div id="center">
   <div style="width: 100%">
-    <h1>Settings</h1>
-    <p><a href="/logout/">Sign out</a></p>
+    <h1>Error</h1>
+    <p>That page does not exist.</a>
   </div>
 </div>
 
