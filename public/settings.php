@@ -5,8 +5,7 @@
   <a class="option" onclick="history.pushState('', '', '/settings/account/'); switchView();" id="o-account">Account</a>
   <a class="option" onclick="history.pushState('', '', '/settings/banking/'); switchView();" id="o-banking">Banking</a>
   <a class="option" onclick="history.pushState('', '', '/settings/notifications/'); switchView();" id="o-notifications">Notifications</a>
-  <a class="option" onclick="history.pushState('', '', '/settings/history/'); switchView();" id="o-history">History</a>
-  <a class="option" onclick="history.pushState('', '', '/settings/history/'); switchView();" id="o-history">History</a>
+  <a class="option" onclick="history.pushState('', '', '/settings/security/'); switchView();" id="o-security">Security</a>
   <a class="option" onclick="history.pushState('', '', '/settings/help/'); switchView();" id="o-help">Help</a>
   <a class="option" href="/logout/">Logout</a>
 </div>
@@ -30,11 +29,11 @@
       body.innerHTML = " \
       <h1>Banking</h1> \
       <p>Edit your banking information here.</p>"
-    } else if (view == "history") {
-      toggle(document.getElementById('o-history'))
+    } else if (view == "security") {
+      toggle(document.getElementById('o-security'))
       body.innerHTML = " \
-      <h1>History</h1> \
-      <p>View your bet history here.</p>"
+      <h1>Security</h1> \
+      <p>Edit your security preferences here.</p>"
     } else if (view == "help") {
       toggle(document.getElementById('o-help'))
       body.innerHTML = " \
