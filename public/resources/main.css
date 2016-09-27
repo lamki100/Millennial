@@ -63,7 +63,7 @@ body {
   margin: 23px auto 0px;
   text-align: right;
   border-bottom: 1px solid rgba(255,255,255,.2);
-  padding: 0 2px 3px;
+  padding: 0 0px 3px;
 }
 
 #header a {
@@ -76,6 +76,7 @@ body {
   float: left;
   font-family: "Aliens";
   font-size: 46px;
+  letter-spacing: .5px;
 }
 
 #header-search {
@@ -107,15 +108,16 @@ body {
   display: inline-block;
   position: absolute;
   margin-top: 47px;
-  background-color: #222;
   width: 210px;
   text-align: left;
-  transition: height .4s, padding-top .4s;
-  background-color: rgba(255,255,255,.05);
-  padding: 0 19px;
+  transition: height .3s, padding-top .3s;
+  background-color: rgba(255,255,255,.02);
+  padding: 0 20px;
   overflow: hidden;
   font-family: "Gotham";
   text-transform: uppercase;
+  height: 0;
+  font-size: 12px;
 }
 
 #header-account {
@@ -138,31 +140,18 @@ body {
   margin: 0 auto;
 }
 
-.error {
-  color: #fa8 !important;
-}
-
-.message {
-  display: inline;
-  color: rgba(0,0,0,0);
-  transition: color .5s;
-  position: absolute;
-  z-index: 1;
-  margin: 10px 8px;
-}
-
 .toggle {
   font-size: 13px;
   display: inline-flex;
   justify-content: space-between;
-  margin-bottom: 12px;
+  margin-bottom: 9px;
   width: 230px;
 }
 
 .toggle .option {
   width: 100% !important;
   margin: 0 !important;
-  padding: 19px !important;
+  padding: 18px !important;
   border: 1px solid rgba(255,255,255,.03);
 }
 
@@ -179,6 +168,7 @@ form {
 
 input {
   font-size: 12px;
+  letter-spacing: .1px;
   color: white;
   border: 1px solid rgba(255,255,255,.04);
   padding: 0 14px;
@@ -186,7 +176,7 @@ input {
   height: 40px;
   margin-bottom: 9px;
   display: inline-block;
-  width: 200px;
+  width: 210px;
 }
 
 input[type='submit'], .toggle .option {
@@ -198,6 +188,7 @@ input[type='submit'], .toggle .option {
   background-color: rgba(255,255,255,.02);
   padding: 0 30px;
   cursor: pointer;
+  text-align: center;
 }
 
 input[type='submit']:hover, .toggle .option:hover {
@@ -210,6 +201,10 @@ h1 {
   letter-spacing: -.6px;
   font-weight: 300;
   font-family: "Gotham";
+}
+
+h2 {
+  font-weight: 600;
 }
 
 p {
@@ -225,6 +220,19 @@ a {
 
 b {
   font-weight: 600;
+}
+
+.error {
+  color: #fa4 !important;
+}
+
+.message {
+  display: inline;
+  color: rgba(0,0,0,0);
+  transition: color .5s;
+  position: absolute;
+  z-index: 1;
+  margin: 10px 8px;
 }
 
 ::-webkit-input-placeholder {
@@ -243,16 +251,16 @@ b {
   text-align: center;
 }
 
-#settings-sidebar {
-  width: 175px;
+#sidebar {
+  width: 173px;
   display: inline-block;
   vertical-align: top;
-  margin-right: 35px;
+  margin-right: 32px;
 }
 
-#settings-sidebar .option {
+#sidebar .option {
   border-bottom: 1px solid rgba(255,255,255,.05);
-  padding: 19px 15px;
+  padding: 19px 12px;
   display: block;
   text-decoration: none;
   border-left: 0 solid;
@@ -261,22 +269,48 @@ b {
   transition: border-left .3s, color .3s, padding-left .3s;
 }
 
-#settings-sidebar .pic {
-  width: 115px;
-  height: 115px;
+#sidebar .pic {
+  width: 122px;
+  height: 122px;
   border-radius: 50%;
-  border: 5px solid rgba(255,255,255,.2) !important;
-  margin: 11px auto;
+  border: 5px solid #333 !important;
+  margin: 9px auto;
+  background: url("images/profile.png") center center no-repeat;
+  background-size: contain;
 }
 
-#settings-sidebar .selected {
-  border-left: 7px solid rgba(0,255,60, .8);
+#sidebar .selected {
+  border-left: 7px solid rgba(0,255,80, .85);
   color: white;
   font-weight: 600;
-  padding-left: 12px;
+  padding-left: 10px;
 }
 
-#settings-body {
+#sidebar-body {
   display: inline-block;
-  margin-top: 56px;
+  margin-top: 53px;
+}
+
+#profile-header {
+  text-align: center;
+  margin-top: 31px;
+}
+
+#profile-header-text {
+  display: inline-block;
+  vertical-align: top;
+}
+
+#profile-header-follow {
+  display: inline-block;
+  vertical-align: top;
+  background-color: rgba(255,255,255,.02);
+  border: 1px solid rgba(255,255,255,.03);
+  padding: 12px 23px;
+  font-size: 11px;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  margin-left: 22px;
+  margin-top: 1px;
+  cursor: pointer;
 }

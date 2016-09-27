@@ -14,7 +14,7 @@
       <a href="/forgot/">I can not access my account</a>
     </form>
 
-    <form onsubmit='register(); return false' id="register-form" style="height: 165px">
+    <form onsubmit='register(); return false' id="register-form" style="height: 167px">
       <input type='text' placeholder='Username' spellcheck='false' autocomplete='off' maxlength='40' id='register-username'>
       <input type='password' placeholder='Password' spellcheck='false' maxlength='40' id='register-password'><br>
       <input type='text' placeholder='Email' spellcheck='false' autocomplete='off' maxlength='40' id='register-email'>
@@ -31,12 +31,12 @@
   function toggleLogin(sender) {
     if (sender.innerHTML == "Register") {
       document.getElementById("register-username").focus();
-      document.getElementById("register-form").style.height = "165px"
+      document.getElementById("register-form").style.height = "167px"
       document.getElementById("login-form").style.height = "0px"
     } else if (sender.innerHTML == "Login") {
       document.getElementById("login-username").focus();
       document.getElementById("register-form").style.height = "0px"
-      document.getElementById("login-form").style.height = "80px"
+      document.getElementById("login-form").style.height = "70px"
     }
   }
 

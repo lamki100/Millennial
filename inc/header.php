@@ -2,10 +2,10 @@
 include "db.php";
 
 $token = isset($_COOKIE["token"]) ? $_COOKIE["token"] : null;
-$account = null;
+$my_account = null;
 if ($token) {
-  $account = $db->query("SELECT * FROM accounts WHERE token='$token'")->fetch();
-  if (!$account) setcookie("token", "", time() - 10000);
+  $my_account = $db->query("SELECT * FROM accounts WHERE token='$token'")->fetch();
+  if (!$my_account) setcookie("token", "", time() - 10000);
 }
 ?>
 
@@ -38,7 +38,7 @@ if ($token) {
     if (search != "") {
       results.style.height = "300px"
       results.style.paddingTop = "20px"
-      results.style.borderBottom = "2px solid rgba(255,255,255,.5)"
+      results.style.borderBottom = "2px solid rgba(255,255,255,.6)"
     } else {
       results.style.height = "0"
       results.style.paddingTop = "0"
@@ -56,7 +56,7 @@ if ($token) {
     <a href="/" id="header-logo">TRENDED</a>
     <div id="header-results"></div>
     <input type='text' spellcheck='false' autocomplete='off' onblur="this.value=''; search()" id="header-search" placeholder="Search" oninput="search()">
-    <a href='<?php if ($account) echo "/u/".$account["username"]."/"; else echo "/login/" ?>' id="header-account"></a>
-    <?php if ($account) echo "<a href='/settings/account/' id='header-settings'></a>" ?>
+    <a href='<?php if ($my_account) echo "/user/".$my_account["username"]."/"; else echo "/login/" ?>' id="header-account"></a>
+    <?php if ($my_account) echo "<a href='/settings/account/' id='header-settings'></a>" ?>
   </div>
   <div id="master">
