@@ -11,15 +11,18 @@
 
 <div id="sidebar">
   <a class="option" style="border: none"><div class="pic"></div></a>
-  <a class="option" onclick="history.pushState('', '', '/user/<?php echo $account['username'] ?>/activity/'); switchView();" id="o-activity">All Activity</a>
-  <a class="option" onclick="history.pushState('', '', '/user/<?php echo $account['username'] ?>/message/'); switchView();" id="o-message">Private Message</a>
+  <a class="option" onclick="history.pushState('', '', '/user/<?php echo $account['username'] ?>/activity/'); switchView();" id="o-activity">Activity</a>
+  <a class="option" onclick="history.pushState('', '', '/user/<?php echo $account['username'] ?>/activity/'); switchView();" id="o-activity">Current Bets</a>
+  <a class="option" onclick="history.pushState('', '', '/user/<?php echo $account['username'] ?>/activity/'); switchView();" id="o-activity">Past Bets</a>
+  <a class="option" onclick="history.pushState('', '', '/user/<?php echo $account['username'] ?>/activity/'); switchView();" id="o-activity">Ideas</a>
+  <a class="option" onclick="history.pushState('', '', '/user/<?php echo $account['username'] ?>/message/'); switchView();" id="o-message">Message</a>
 </div>
 
 <div id="sidebar-body">
   <div id='profile-header-text'>
     <h1><?php echo $account["username"] ?></h1>
   </div>
-  <!-- <div id='profile-header-follow'>Follow</div> -->
+  <div id='profile-header-follow'>Follow</div>
   <p><?php echo ucwords($account["fullname"]) ?></p>
 
   <div id="body"></div>

@@ -4,8 +4,8 @@
   <a class="option" style="border: none" onclick="alert('You will be able to change your profile picture.')"><div class="pic"></div></a>
   <a class="option" onclick="history.pushState('', '', '/settings/account/'); switchView();" id="o-account">Account</a>
   <a class="option" onclick="history.pushState('', '', '/settings/banking/'); switchView();" id="o-banking">Banking</a>
-  <a class="option" onclick="history.pushState('', '', '/settings/notifications/'); switchView();" id="o-notifications">Notifications</a>
   <a class="option" onclick="history.pushState('', '', '/settings/security/'); switchView();" id="o-security">Security</a>
+  <a class="option" onclick="history.pushState('', '', '/settings/notifications/'); switchView();" id="o-notifications">Notifications</a>
   <a class="option" onclick="history.pushState('', '', '/settings/help/'); switchView();" id="o-help">Help</a>
   <a class="option" href="/logout/">Logout</a>
 </div>
@@ -43,7 +43,14 @@
       toggle(document.getElementById('o-account'))
       body.innerHTML = " \
       <h1>Account Information</h1> \
-      <p>Edit your account information here.</p>"
+      <p>Edit your account information here.</p> \
+      <div style='width: 450px; margin-top: 60px;'> \
+        <label>Name</label><input type='text' placeholder='Matthew Helms' spellcheck='false' autocomplete='off' maxlength='40' id='login-username'><br> \
+        <label>Username</label><input type='text' placeholder='helms107' spellcheck='false' autocomplete='off' maxlength='40' id='login-username'><br> \
+        <label>Bio</label><input type='text' placeholder='' spellcheck='false' autocomplete='off' maxlength='40' id='login-username'><br> \
+        <label>Email</label><input type='text' placeholder='matthewthelms@yahoo.com' spellcheck='false' autocomplete='off' maxlength='40' id='login-username'><br> \
+        <input type='submit' value='Save'> \
+      </div> "
     }
   }
 

@@ -22,7 +22,6 @@
     font-weight: 300;
 }
 
-
 @font-face {
   font-family: "Open";
   src: url("fonts/open.woff") format('woff');
@@ -220,6 +219,13 @@ a {
 
 b {
   font-weight: 600;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 30px;
+  display: inline-block;
+  width: 90px; 
 }
 
 .error {
