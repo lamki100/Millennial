@@ -15,7 +15,13 @@ CREATE TABLE Millenial.Users
 CREATE UNIQUE INDEX Users_email_uindex ON Millenial.Users (email);
 
 -- when user registers
-INSERT INTO Millenial.Users(Name, username, password, email)  VALUES ("name","username","password","email");
+DELIMITER //
+CREATE PROCEDURE AddUser(IN name VARCHAR(50), IN username VARCHAR(50), IN password VARCHAR(50), IN email VARCHAR(50))
+  BEGIN
+    INSERT INTO Millenial.Users(Name, username, password, email)  VALUES (name,username,password,email);
+  END //
+DELIMITER ;
+
 
 -- Use this query when user logs in to compare password
 -- think about encrypting
@@ -26,11 +32,27 @@ SELECT password from Millenial.Users WHERE username = "";
 UPDATE Millenial.Users SET password = "temp" WHERE email = "email";
 UPDATE Millenial.Users SET forgot_password = 1 WHERE email = "email";
 
+DELIMITER //
+CREATE PROCEDURE forgotPassword(IN _email VARCHAR(50))
+  BEGIN
+    UPDATE Millenial.Users SET password = "temp" WHERE email = _email;
+	UPDATE Millenial.Users SET forgot_password = 1 WHERE email = _email;
+  END //
+DELIMITER ;
+
+
 -- when the user forgets the username send email
 -- update the username and password based off of email
 UPDATE Millenial.Users SET username = "temp", password = "temp" WHERE email = "email";
 UPDATE Millenial.Users SET forgot_username = 1 WHERE email = "email";
 
+DELIMITER //
+CREATE PROCEDURE forgotPassword(IN _email VARCHAR(50))
+  BEGIN
+    UPDATE Millenial.Users SET username = "temp", password = "temp" WHERE email = _email;
+	UPDATE Millenial.Users SET forgot_username = 1 WHERE email = _email;
+  END //
+DELIMITER ;
 
 
 CREATE TABLE Millenial.UserBanking
