@@ -155,3 +155,33 @@ CREATE PROCEDURE AddNotificationTypesUsers(IN userid INT(11), IN email TINYINT(1
   END //
 DELIMITER ;
 
+
+CREATE TABLE Millenial.Bet
+(
+    id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    creator_user_id INT(11) NOT NULL,
+    description LONGTEXT,
+    open TINYINT(1) DEFAULT 0,
+    has_bets TINYINT(1) DEFAULT 0,
+    created_at TINYINT(1),
+    updated_at TINYINT(1)
+);
+
+CREATE TABLE Millenial.Bet_User
+(
+    id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    user_id INT(11) NOT NULL,
+    bet_id INT(11) NOT NULL,
+    bet_amount INT(11) NOT NULL,
+    created_at TINYINT(1),
+    updated_at TINYINT(1)
+);
+
+CREATE TABLE Millenial.Bet_Source
+(
+    id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    bet_id INT(11) NOT NULL,
+    source_id INT(11) NOT NULL,
+    created_at TINYINT(1),
+    updated_at TINYINT(1)
+);
