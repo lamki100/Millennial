@@ -21,10 +21,11 @@
   display: inline-block;
   position: relative;
   top: -9px;
-  margin-left: 22px;
+  padding: 13px 15px;
+  margin-left: 24px;
   margin-bottom: 13px;
   font-size: 13px;
-  /*letter-spacing: 0px;*/
+  letter-spacing: 0px;
   font-family: "Gotham";
 }
 </style>
@@ -41,9 +42,7 @@
   </h1>
   <!-- <p style="text-align:left">Software Engineer | Chapman Unv. I'm a total troll don't believe me.</p> -->
   <div class='toggle' style='margin-bottom:0px;'>
-    <div class='option selected' onclick='toggle(this); toggleAccount(this)'>All</div>
-    <div class='option' onclick='toggle(this); toggleAccount(this)'>Ideas</div>
-    <div class='option' onclick='toggle(this); toggleAccount(this)'>Bets</div>
+    <div class='option selected' onclick='toggle(this); toggleAccount(this)'>All</div><div class='option' onclick='toggle(this); toggleAccount(this)'>Ideas</div><div class='option' onclick='toggle(this); toggleAccount(this)'>Bets</div>
   </div>
   <div id="activity"></div>
 </div>

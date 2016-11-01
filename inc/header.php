@@ -75,7 +75,7 @@ if ($token) {
     color: #222;
     -webkit-font-smoothing: antialiased;
     font-size: 13px;
-    background-color: #fbfbfb;
+    background-color: #fafafa;
     /*background: url('resources/images/bg.png') center center no-repeat;*/
     background-size: cover;
   }
@@ -83,7 +83,7 @@ if ($token) {
   #header {
     margin: 0 auto;
     /*padding-top: 25px;*/
-    padding: 16px 0 10px;
+    padding: 14px 0 8px;
     text-align: right;
     /*height: 92px;*/
   }
@@ -100,40 +100,37 @@ if ($token) {
     font-family: "Aliens";
     line-height: 0;
     font-size: 27px;
-    color: #000;
-    letter-spacing: 12px;
-    margin-top: 10px;
+    /*color: #000;*/
+    letter-spacing: 14px;
+    margin-top: 11px;
   }
 
   #header-globe {
     vertical-align: middle;
-    height: 48px;
-    border-right: 1px solid #eee;
-    padding-right: 12px;
-    margin-right: 18px;
-    margin-top: -10px;
+    height: 45px;
+    /*border-right: 1px solid #eee;*/
+    /*padding-right: 12px;*/
+    margin-right: 22px;
+    margin-top: -7px;
   }
 
   #header-search {
     margin: 0;
-    margin-top: 0px;
-    border: 0;
-    background: url("/resources/images/search-black.png") left center no-repeat;
-    background-size: 40px;
+    /*margin-top: 0px;*/
     width: 0;
     height: 0;
-    padding: 23px;
+    border: 0;
+    background: url("/resources/images/search-black.png") left center no-repeat;
+    background-size: 45px;
+    padding: 28px;
     cursor: pointer;
     transition: width .3s, padding-left .3s;
-    line-height: normal !important;
-    position: absolute;
-    left: 45%;
   }
 
   #header-account {
     /*margin-top: -1px;*/
-    /*margin-left: 18px;*/
-    padding: 28px;
+    /*margin-left: 4px;*/
+    padding: 30px;
     background: url("/resources/images/account-black.png") center center no-repeat;
     background-size: contain;
   }
@@ -155,15 +152,15 @@ if ($token) {
   }
 
   #header-search:focus {
-    width: 250px;
-    padding-left: 52px;
+    width: 240px;
+    padding-left: 55px;
     cursor: auto;
   }
 
   #header-results {
     display: inline-block;
     position: absolute;
-    margin-top: 52px;
+    margin-top: 69px;
     width: 255px;
     text-align: left;
     transition: height .3s, padding-top .3s;
@@ -172,7 +169,6 @@ if ($token) {
     overflow: hidden;
     text-transform: uppercase;
     height: 0;
-    font-size: 13px;
   }
   </style>
 </head>
@@ -213,7 +209,7 @@ if ($token) {
     <div id="header">
       <a href="/" id="header-logo"><img src='/resources/images/globe-black.png' id='header-globe'>TRENDED</a>
       <div id="header-results"></div>
-      <!-- <input type='text' spellcheck='false' autocomplete='off' onblur="this.value=''; search()" id="header-search" placeholder="Search" oninput="search()"> -->
+      <input type='text' spellcheck='false' autocomplete='off' onblur="this.value=''; search()" id="header-search" placeholder="Search" oninput="search()">
       <?php if ($my_account) echo "<a href='/create/' id='header-created'></a><a href='/user/".$my_account["username"]."/' id='header-account'></a>"; else echo "<a href='/login/' id='header-account'></a>" ?>
     </div>
   </div>

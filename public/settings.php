@@ -5,7 +5,6 @@
   display: table;
   table-layout: fixed;
   width: 100%;
-  margin-top: 30px;
 }
 
 .cell {
@@ -17,35 +16,23 @@
   width: 180px;
 }
 
-#sidebar .option {
+#sidebar #options .option {
   -webkit-user-select: none;
-  padding: 25px 20px;
+  padding: 23px 20px;
   display: block;
   font-weight: 300;
   text-decoration: none;
   border-left: 3px solid transparent;
-  transition: background-color .1s;
 }
 
-#sidebar .selected {
+#sidebar #options .selected {
   background-color: #f6f6f6;
   border-color: #444;
-  font-weight: 700;
+  /*font-weight: 700;*/
 }
 
 #sidebar .option:active {
-  background-color: #f0f0f0;
-}
-
-#sidebar #pic {
-  width: 120px;
-  height: 120px;
-  border: 1px solid #eee !important;
-  margin: 20px auto 35px;
-  background: url("/resources/images/profile.png") center center no-repeat;
-  background-size: contain;
-  background-color: white;
-  border-radius: 50%;
+  background-color: #f6f6f6;
 }
 
 .spacer {
@@ -79,38 +66,38 @@
     if (view == "notifications") {
       toggle(document.getElementById('o-notifications'))
       body.innerHTML = " \
-      <div class='block'> \
+      <div class='box padding'> \
         <h1>Notifications</h1> \
         <p>Edit your alerts here.</p> \
       </div>"
     } else if (view == "banking") {
       toggle(document.getElementById('o-banking'))
       body.innerHTML = " \
-      <div class='inline' style='text-align:center'> \
-        <h2>Account Transfer</h2> \
-        <div class='toggle'> \
-          <div class='option selected' onclick='toggle(this); toggleAccount(this)'>Deposit</div> \
-          <div class='option' onclick='toggle(this); toggleAccount(this)'>Withdraw</div> \
-        </div> \
-          <form> \
-            <input type='text' placeholder='$0.00' style='text-align:center' spellcheck='false' autocomplete='off' maxlength='40' id='login-username'><br> \
-            <input type='submit' value='Transfer'><br> \
-          </form> \
+      <div class='box padding'> \
+        <form class='bottom'> \
+          <h2>Account Transfer</h2> \
+          <div class='toggle'> \
+            <div class='option selected' onclick='toggle(this); toggleAccount(this)'>Deposit</div><div class='option' onclick='toggle(this); toggleAccount(this)'>Withdraw</div> \
+          </div> \
+          <input type='text' placeholder='$0.00' style='text-align:center' spellcheck='false' autocomplete='off' maxlength='40' id='login-username'><br> \
+          <input type='submit' value='Transfer'><br> \
+        </form> \
+        <h2>Linked Accounts</h2> \
       </div> \
-      <h2>Linked Accounts</h2> \
       "
     } else if (view == "help") {
       toggle(document.getElementById('o-help'))
       body.innerHTML = " \
-      <h1>Help</h1> \
-      <p>Ask your questions here.</p>"
+      <div class='box padding'> \
+        <h1>Help</h1> \
+        <p>Ask your questions here.</p> \
+      </div>"
     } else {
       toggle(document.getElementById('o-account'))
       body.innerHTML = " \
       <div class='box padding'> \
-        <form onsubmit='updateAccount(); return false' id='account-form' class='bottom'> \
-          <h2>Account Information</h2> \
-          <img src='/resources/images/profile.png' class='picture'> \
+        <form onsubmit='updateAccount(); return false' id='account-form' class=''> \
+          <img src='/resources/images/profile.png' class='picture box'> \
           <div class='inline'> \
             <label>Name</label> \
             <label>Username</label> \
@@ -127,8 +114,10 @@
             <input type='submit' value='Save'><br> \
           </div> \
         </form> \
+      </div> \
+      <div class='box padding'> \
         <form onsubmit='updatePassword(); return false' id='password-form'> \
-          <h2>Change Password</h2> \
+          <h2>Change Your Password</h2> \
           <div class='inline'> \
             <label>Old Password</label> \
             <label>New Password</label> \
