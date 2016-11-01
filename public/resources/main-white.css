@@ -10,7 +10,7 @@ form {
   text-align: right;
 }
 
-label, input {
+label, input, textarea {
   padding: 15px 0px;
   line-height: 18px;
   margin-bottom: 6px;
@@ -24,23 +24,29 @@ label {
   color: #666;
 }
 
-input {
+textarea {
+  resize: none;
+}
+
+input, textarea {
   display: inline-block;
   width: 270px;
   background-color: white;
   font-family: "Open";
   padding-left: 12px;
+  padding-right: 12px;
 }
 
 input[type='submit'] {
   cursor: pointer;
   width: auto;
-  padding-left: 15px;
-  padding-right: 15px;
-  color: #666;
+  padding-left: 17px;
+  padding-right: 17px;
   font-weight: 600;
   text-transform: uppercase;
   font-family: "Gotham";
+  color: rgba(60,140,255,1);
+  border-color: rgba(60,140,255,.5);
 }
 
 input[type='submit']:active {
@@ -50,6 +56,7 @@ input[type='submit']:active {
 
 .toggle {
   margin-bottom: 7px;
+  -webkit-user-select: none;
 }
 
 .toggle .option {
@@ -59,14 +66,14 @@ input[type='submit']:active {
   min-width: 135px;
   font-weight: 600;
   text-transform: uppercase;
-  /*text-align: center;*/
   background-color: #eee;
   font-family: "Gotham";
   display: inline-block;
+  color: rgba(40,130,255,.9);
 }
 
 .toggle .selected {
-  background-color: #333;
+  background-color: rgba(40,130,255,.9);
   color: white;
 }
 
@@ -80,17 +87,21 @@ h1 {
 }
 
 h2 {
-  margin-bottom: 25px;
-  font-family: "Gotham";
-  font-weight: 400;
+  margin-bottom: 29px;
+  /*font-family: "Gotham";*/
   font-size: 19px;
-  /*text-transform: uppercase;*/
-  /*letter-spacing: 1px;*/
+  letter-spacing: -.2px;
+  font-weight: 600;
+}
+
+h3 {
+  /*font-family: "Gotham";*/
+  font-size: 14px;
 }
 
 p {
   line-height: 1.5;
-  letter-spacing: -.2px;
+  /*letter-spacing: -.2px;*/
   text-align: center;
   margin-bottom: 10px;
 }
@@ -128,36 +139,26 @@ b {
 .box {
   box-shadow: 0 1px 2px rgba(0,0,0,.15);
   background-color: white;
-  margin-bottom: 30px;
+  margin-bottom: 37px;
 }
 
 .padding {
-  padding: 35px;
+  padding: 39px 40px 34px;
   text-align: center;
 }
 
 .picture {
   border-radius: 50%;
   display: block;
+  vertical-align: middle;
   width: 190px;
-  border: 1px solid #aaa;
-  margin: 0 auto 35px !important;
+  border: 2px solid rgba(0,0,0,.03);
+  margin: 0 auto 40px !important;
   cursor: pointer;
 }
 
 .bottom {
-  margin-bottom: 35px;
-}
-
-.flex {
-  display: flex;
-  justify-content: space-around;
-  padding: 30px;
-}
-
-#flat {
-  text-align: center;
-  margin-top: 42px;
+  margin-bottom: 40px;
 }
 
 #activity {

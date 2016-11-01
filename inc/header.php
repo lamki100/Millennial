@@ -67,8 +67,8 @@ if ($token) {
 
   * { padding: 0; margin: 0; outline:0; border:0; border-radius:0; background:none; text-decoration:none; font:inherit; letter-spacing: inherit; -webkit-appearance: none; -moz-appearance: none; box-sizing: border-box; }
 
-  #header, #master, #center { max-width: 980px; }
-  #master { margin: 0 auto; }
+  #header, #master, #center { max-width: 930px; }
+  #master { margin: 0 auto; text-align: center;}
 
   body {
     font-family: "Open", "Helvetica Neue", sans-serif;
@@ -110,7 +110,7 @@ if ($token) {
     height: 45px;
     /*border-right: 1px solid #eee;*/
     /*padding-right: 12px;*/
-    margin-right: 22px;
+    margin-right: 20px;
     margin-top: -7px;
   }
 
@@ -129,7 +129,7 @@ if ($token) {
 
   #header-account {
     /*margin-top: -1px;*/
-    /*margin-left: 4px;*/
+    margin-left: 4px;
     padding: 30px;
     background: url("/resources/images/account-black.png") center center no-repeat;
     background-size: contain;
@@ -160,6 +160,7 @@ if ($token) {
   #header-results {
     display: inline-block;
     position: absolute;
+    z-index: 10;
     margin-top: 69px;
     width: 255px;
     text-align: left;
@@ -205,10 +206,10 @@ if ($token) {
   }
 </script>
 <body>
-  <div class='box'>
+  <div class='box' style='box-shadow: 0px 1px 2px rgba(0,0,0,.07)'>
     <div id="header">
       <a href="/" id="header-logo"><img src='/resources/images/globe-black.png' id='header-globe'>TRENDED</a>
-      <div id="header-results"></div>
+      <div id="header-results" class='box'></div>
       <input type='text' spellcheck='false' autocomplete='off' onblur="this.value=''; search()" id="header-search" placeholder="Search" oninput="search()">
       <?php if ($my_account) echo "<a href='/create/' id='header-created'></a><a href='/user/".$my_account["username"]."/' id='header-account'></a>"; else echo "<a href='/login/' id='header-account'></a>" ?>
     </div>

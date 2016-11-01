@@ -10,41 +10,54 @@
 ?>
 
 <style>
-#activity {
-  background-color: white;
-  border: 1px solid #f2f2f2;
-  width: 70%;
-  height: 100px;
-  margin: 0 auto;
-}
 #follow {
   display: inline-block;
   position: relative;
   top: -9px;
-  padding: 13px 15px;
-  margin-left: 24px;
-  margin-bottom: 13px;
+  padding: 12px 17px;
+  margin-left: 22px;
+  margin-bottom: 0px;
   font-size: 13px;
   letter-spacing: 0px;
-  font-family: "Gotham";
+}
+
+.user-picture {
+  border: none !important;
+  display: inline-block !important;
+  vertical-align: middle;
+  margin: 0 !important;
+}
+
+.user-text {
+  display: inline-block !important;
+  vertical-align: middle;
+  margin-left: 45px;
+  text-align: left;
+  max-width: 40%;
 }
 </style>
 
-<div id="flat">
-  <h1>
-    <?php
-    echo $account["username"];
-    if ($my_account) {
-      if ($my_account['id'] == $account['id']) echo "<input type='submit' value='Edit Account' id='follow' onclick=\"window.location='/settings/'\">";
-      else echo "<input type='submit' value='Follow' id='follow' onclick='follow()'>";
-    } else echo "<input type='submit' value='Follow' id='follow' onclick=\"window.location='/login/'\">";
-    ?>
-  </h1>
-  <!-- <p style="text-align:left">Software Engineer | Chapman Unv. I'm a total troll don't believe me.</p> -->
-  <div class='toggle' style='margin-bottom:0px;'>
-    <div class='option selected' onclick='toggle(this); toggleAccount(this)'>All</div><div class='option' onclick='toggle(this); toggleAccount(this)'>Ideas</div><div class='option' onclick='toggle(this); toggleAccount(this)'>Bets</div>
+<div class='bottom'>
+  <img src='/resources/images/profile.png' class='user-picture picture box'>
+  <div class='user-text'>
+    <h1>
+      <?php
+      echo $account["username"];
+      if ($my_account) {
+        if ($my_account['id'] == $account['id']) echo "<input type='submit' value='Edit Account' id='follow' onclick=\"window.location='/settings/'\">";
+        else echo "<input type='submit' value='Follow' id='follow' onclick='follow()'>";
+      } else echo "<input type='submit' value='Follow' id='follow' onclick=\"window.location='/login/'\">";
+      ?>
+      <h3><?php echo "<b>".$account['fullname']."</b> - ".$account['bio'] ?></h3>
+    </h1>
   </div>
-  <div id="activity"></div>
+</div>
+
+<div class='toggle' style='margin-bottom:0px;'>
+  <div class='option selected' onclick='toggle(this); toggleAccount(this)'>All</div><div class='option' onclick='toggle(this); toggleAccount(this)'>Ideas</div><div class='option' onclick='toggle(this); toggleAccount(this)'>Bets</div>
+</div>
+<div class='padding box'>
+  User activity will go here.
 </div>
     <!-- <div style='display:block'>
       <div class='inline'>

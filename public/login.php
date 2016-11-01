@@ -42,7 +42,7 @@
   function login() {
     var username = document.getElementById("login-username").value
     var password = document.getElementById("login-password").value
-    post("/resources/ajax/login.php", {"username": username, "password": password}, function(r) {
+    post("/resources/ajax/functions.php", {"func": "login", "username": username, "password": password}, function(r) {
       r = JSON.parse(r)
       if (r["status"] == "ok") window.location = "/"
       else {
@@ -59,11 +59,10 @@
     var fullname = document.getElementById("register-fullname").value
     var username = document.getElementById("register-username").value
     var password = document.getElementById("register-password").value
-    post("/resources/ajax/register.php", {"email": email, "fullname": fullname, "username": username, "password": password}, function(r) {
+    post("/resources/ajax/functions.php", {"func": "register", "email": email, "fullname": fullname, "username": username, "password": password}, function(r) {
       r = JSON.parse(r)
-      if (r["status"] == "ok") {
-        window.location = "/"
-      } else {
+      if (r["status"] == "ok") window.location = "/"
+      else {
         var message = document.getElementById("register-message")
         message.innerHTML = r["message"]
         message.className = "message error"
