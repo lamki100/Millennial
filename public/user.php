@@ -9,46 +9,56 @@
   }
 ?>
 
-<div id="sidebar">
-  <a class="option" style="border: none"><div class="pic"></div></a>
-  <a class="option" onclick="history.pushState('', '', '/user/<?php echo $account['username'] ?>/activity/'); switchView();" id="o-activity">Activity</a>
-  <a class="option" onclick="history.pushState('', '', '/user/<?php echo $account['username'] ?>/activity/'); switchView();" id="o-activity">Current Bets</a>
-  <a class="option" onclick="history.pushState('', '', '/user/<?php echo $account['username'] ?>/activity/'); switchView();" id="o-activity">Past Bets</a>
-  <a class="option" onclick="history.pushState('', '', '/user/<?php echo $account['username'] ?>/activity/'); switchView();" id="o-activity">Ideas</a>
-  <a class="option" onclick="history.pushState('', '', '/user/<?php echo $account['username'] ?>/message/'); switchView();" id="o-message">Message</a>
-</div>
+<style>
+#activity {
+  background-color: white;
+  border: 1px solid #f2f2f2;
+  width: 70%;
+  height: 100px;
+  margin: 0 auto;
+}
+#follow {
+  display: inline-block;
+  position: relative;
+  top: -9px;
+  margin-left: 22px;
+  margin-bottom: 13px;
+  font-size: 13px;
+  /*letter-spacing: 0px;*/
+  font-family: "Gotham";
+}
+</style>
 
-<div id="sidebar-body">
-  <div id='profile-header-text'>
-    <h1><?php echo $account["username"] ?></h1>
+<div id="flat">
+  <h1>
+    <?php
+    echo $account["username"];
+    if ($my_account) {
+      if ($my_account['id'] == $account['id']) echo "<input type='submit' value='Edit Account' id='follow' onclick=\"window.location='/settings/'\">";
+      else echo "<input type='submit' value='Follow' id='follow' onclick='follow()'>";
+    } else echo "<input type='submit' value='Follow' id='follow' onclick=\"window.location='/login/'\">";
+    ?>
+  </h1>
+  <!-- <p style="text-align:left">Software Engineer | Chapman Unv. I'm a total troll don't believe me.</p> -->
+  <div class='toggle' style='margin-bottom:0px;'>
+    <div class='option selected' onclick='toggle(this); toggleAccount(this)'>All</div>
+    <div class='option' onclick='toggle(this); toggleAccount(this)'>Ideas</div>
+    <div class='option' onclick='toggle(this); toggleAccount(this)'>Bets</div>
   </div>
-  <div id='profile-header-follow'>Follow</div>
-  <p><?php echo ucwords($account["fullname"]) ?></p>
-
-  <div id="body"></div>
+  <div id="activity"></div>
 </div>
+    <!-- <div style='display:block'>
+      <div class='inline'>
+        <p><b>Matthew Helms</b></p>
+      </div>
+      <div class='inline' style="width:350px; margin-left: 0px">
+        <p style="text-align:left">Software Engineer | Chapman Unv. I'm a total troll don't believe me.</p>
+      </div>
+    </div> -->
 
-<script type='text/javascript'>
-  switchView()
-
-  function switchView(view) {
-    var body = document.getElementById("body")
-    view = window.location.pathname.split("/")[3]
-
-    if (view == "message") {
-      toggle(document.getElementById('o-message'))
-      // body.innerHTML = " \
-      // <h1>Message</h1> \
-      // <p>Ask your questions here.</p>"
-    } else {
-      toggle(document.getElementById('o-activity'))
-      // body.innerHTML = " \
-      // <h2>Activity</h2>"
-    }
-  }
-
-  window.onpopstate = function(event) {
-    switchView()
+<script>
+  function follow() {
+    alert("You will follow this account soon.")
   }
 </script>
 

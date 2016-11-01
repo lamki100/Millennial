@@ -30,7 +30,7 @@
 
 @font-face {
     font-family: "Open";
-    src: url("fonts/open-bold.woff") format('woff');
+    src: url("fonts/open-semi-bold.woff") format('woff');
     font-weight: 600;
 }
 
@@ -38,6 +38,12 @@
     font-family: "Open";
     src: url("fonts/open-light.woff") format('woff');
     font-weight: 300;
+}
+
+@font-face {
+    font-family: "Open";
+    src: url("fonts/open-bold.woff") format('woff');
+    font-weight: 700;
 }
 
 * {
@@ -48,21 +54,21 @@
 
 body {
   font-family: "Open", "Helvetica Neue", sans-serif;
-  background-color: #222;
+  background-color: #1f1f1f;
   color: white;
   -webkit-font-smoothing: antialiased;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 #header, #master, #center {
-  max-width: 1100px;
+  max-width: 950px;
 }
 
 #header {
-  margin: 23px auto 0px;
+  margin: 20px auto 0px;
   text-align: right;
-  border-bottom: 1px solid rgba(255,255,255,.2);
-  padding: 0 0px 3px;
+  border-bottom: 2px solid rgba(255,255,255,.04);
+  padding: 0 0px 3px 0px;
 }
 
 #header a {
@@ -74,8 +80,7 @@ body {
 #header-logo {
   float: left;
   font-family: "Aliens";
-  font-size: 46px;
-  letter-spacing: .5px;
+  font-size: 49px;
 }
 
 #header-search {
@@ -83,7 +88,7 @@ body {
   margin-top: -5px;
   border: 0;
   background: url("images/search.png") left center no-repeat;
-  background-size: 35px 35px;
+  background-size: 39px 39px;
   width: 0;
   height: 0;
   padding: 24px;
@@ -94,8 +99,8 @@ body {
 }
 
 #header-search:focus {
-  width: 200px;
-  padding-left: 43px;
+  width: 250px;
+  padding-left: 48px;
   cursor: auto;
 }
 
@@ -107,7 +112,7 @@ body {
   display: inline-block;
   position: absolute;
   margin-top: 47px;
-  width: 210px;
+  width: 255px;
   text-align: left;
   transition: height .3s, padding-top .3s;
   background-color: rgba(255,255,255,.02);
@@ -121,17 +126,17 @@ body {
 
 #header-account {
   margin-top: -5px;
-  margin-left: 3px;
-  padding: 24px;
-  background: url("images/account.png") center center no-repeat;
+  margin-left: 6px;
+  padding: 24.3px;
+  background: url("images/account.png") center top no-repeat;
   background-size: contain;
 }
 
 #header-settings {
   margin-top: -1px;
-  margin-left: 11px;
-  padding: 20.5px;
-  background: url("images/settings.png") center center no-repeat;
+  margin-left: 12px;
+  padding: 21px;
+  background: url("images/settings.png") center top no-repeat;
   background-size: contain;
 }
 
@@ -140,58 +145,78 @@ body {
 }
 
 .toggle {
-  font-size: 13px;
   display: inline-flex;
   justify-content: space-between;
-  margin-bottom: 9px;
-  width: 230px;
+  margin-bottom: 13px;
 }
 
 .toggle .option {
-  width: 100% !important;
   margin: 0 !important;
-  padding: 18px !important;
-  border: 1px solid rgba(255,255,255,.03);
+  padding: 15px 30px !important;
+  line-height: 1.6;
+  min-width: 122px;
+  background-color: rgba(255,255,255, .03) !important;
+  border-radius: 3px;
+  transition: background-color .23s;
 }
 
 .toggle .selected {
-  background-color: rgba(0,255,80, .5) !important;
+  background-color: rgba(255,255,255, .087) !important;
 }
 
 form {
   overflow: hidden;
-  transition: height .4s;
-  position: relative;
-  z-index: 2;
+  transition: height .5s;
+}
+
+.inline {
+  display: inline-block;
+  vertical-align: bottom;
+  margin-right: 22px;
+  margin-bottom: 25px;
 }
 
 input {
-  font-size: 12px;
-  letter-spacing: .1px;
+  letter-spacing: .3px;
   color: white;
-  border: 1px solid rgba(255,255,255,.04);
-  padding: 0 14px;
+  border: 1px solid rgba(255,255,255,.09);
+  margin: 0px 1px 10px;
+  padding: 0 12px;
   line-height: 18px;
-  height: 40px;
-  margin-bottom: 9px;
+  height: 48px;
   display: inline-block;
-  width: 210px;
+  width: 213px;
+  /*border-radius: 8px 0;*/
+  font-size: 13px;
 }
 
 input[type='submit'], .toggle .option {
   width: auto;
   margin-bottom: 10px;
-  font-size: 11px;
-  letter-spacing: 2.8px;
+  font-size: 12px;
+  letter-spacing: 1.3px;
   text-transform: uppercase;
-  background-color: rgba(255,255,255,.02);
-  padding: 0 30px;
+  font-weight: 400;
+  background-color: rgba(70,255, 0, .4);
+  border: none;
+  padding: 0 28px;
   cursor: pointer;
   text-align: center;
 }
 
 input[type='submit']:hover, .toggle .option:hover {
-  background-color: rgba(255,255,255,.04);
+  background-color: rgba(70,255,0, .5);
+}
+
+label {
+  display: block;
+  padding: 11px 0;
+  /*letter-spacing: .3px;*/
+  line-height: 1.9;
+  margin-bottom: 10px;
+  text-align: left;
+  font-weight: 700;
+  /*font-size: 13px;*/
 }
 
 h1 {
@@ -203,7 +228,10 @@ h1 {
 }
 
 h2 {
-  font-weight: 600;
+  margin-bottom: 35px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 13px;
 }
 
 p {
@@ -219,13 +247,9 @@ a {
 
 b {
   font-weight: 600;
-}
-
-label {
-  font-weight: 600;
-  margin-bottom: 30px;
-  display: inline-block;
-  width: 90px; 
+  /*text-transform: uppercase;*/
+  /*letter-spacing: 1.3px;*/
+  /*color: #888;*/
 }
 
 .error {
@@ -258,55 +282,59 @@ label {
 }
 
 #sidebar {
-  width: 173px;
-  display: inline-block;
-  vertical-align: top;
-  margin-right: 32px;
+  display: table;
+  width: 100%;
 }
 
-#sidebar .option {
-  border-bottom: 1px solid rgba(255,255,255,.05);
-  padding: 19px 12px;
+#sidebar-options {
+  width: 170px;
+  display: table-cell;
+  vertical-align: top;
+}
+
+#sidebar-options .option {
+  padding: 21px 15px;
   display: block;
   text-decoration: none;
-  border-left: 0 solid;
+  border-left: 0px solid transparent;
   color: rgba(255,255,255,.5);
   font-family: "Gotham";
-  transition: border-left .3s, color .3s, padding-left .3s;
+  font-size: 14px;
+  transition: color .5s;
 }
 
-#sidebar .pic {
+#sidebar-options .selected {
+  border-left: 7px solid rgba(0,255,80, .7);
+  color: white;
+  font-weight: 600;
+  padding-left: 10px;
+  transition: border-left .3s, color .2s, padding-left .3s;
+}
+
+#sidebar-options .pic {
   width: 122px;
   height: 122px;
   border-radius: 50%;
   border: 5px solid #333 !important;
   margin: 9px auto;
-  background: url("images/profile.png") center center no-repeat;
+  /*background: url("images/profile.png") center center no-repeat;*/
   background-size: contain;
 }
 
-#sidebar .selected {
-  border-left: 7px solid rgba(0,255,80, .85);
-  color: white;
-  font-weight: 600;
-  padding-left: 10px;
-}
-
 #sidebar-body {
-  display: inline-block;
-  margin-top: 53px;
+  display: table-cell;
+  padding: 45px 30px 0 0px;
+  text-align: center;
 }
 
-#profile-header {
+/*#profile-header {
   text-align: center;
   margin-top: 31px;
 }
-
 #profile-header-text {
   display: inline-block;
   vertical-align: top;
 }
-
 #profile-header-follow {
   display: inline-block;
   vertical-align: top;
@@ -319,4 +347,4 @@ label {
   margin-left: 22px;
   margin-top: 1px;
   cursor: pointer;
-}
+}*/

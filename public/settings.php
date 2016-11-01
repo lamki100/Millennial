@@ -1,39 +1,104 @@
 <?php include "../inc/header.php" ?>
 
-<div id="sidebar">
-  <a class="option" style="border: none" onclick="alert('You will be able to change your profile picture.')"><div class="pic"></div></a>
-  <a class="option" onclick="history.pushState('', '', '/settings/account/'); switchView();" id="o-account">Account</a>
-  <a class="option" onclick="history.pushState('', '', '/settings/banking/'); switchView();" id="o-banking">Banking</a>
-  <a class="option" onclick="history.pushState('', '', '/settings/security/'); switchView();" id="o-security">Security</a>
-  <a class="option" onclick="history.pushState('', '', '/settings/notifications/'); switchView();" id="o-notifications">Notifications</a>
-  <a class="option" onclick="history.pushState('', '', '/settings/help/'); switchView();" id="o-help">Help</a>
-  <a class="option" href="/logout/">Logout</a>
-</div>
+<style>
+#sidebar {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  margin-top: 30px;
+}
 
-<div id="sidebar-body"></div>
+.cell {
+  display: table-cell;
+  vertical-align: top;
+}
+
+#sidebar #options {
+  width: 180px;
+}
+
+#sidebar .option {
+  -webkit-user-select: none;
+  padding: 25px 20px;
+  display: block;
+  font-weight: 300;
+  text-decoration: none;
+  border-left: 3px solid transparent;
+  transition: background-color .1s;
+}
+
+#sidebar .selected {
+  background-color: #f6f6f6;
+  border-color: #444;
+  font-weight: 700;
+}
+
+#sidebar .option:active {
+  background-color: #f0f0f0;
+}
+
+#sidebar #pic {
+  width: 120px;
+  height: 120px;
+  border: 1px solid #eee !important;
+  margin: 20px auto 35px;
+  background: url("/resources/images/profile.png") center center no-repeat;
+  background-size: contain;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.spacer {
+  width: 10px;
+}
+
+</style>
+
+<div id="sidebar">
+  <div class='cell' id="options">
+    <div class='box'>
+      <!-- <a class='option' id='pic'></a> -->
+      <a class="option" onclick="history.pushState('', '', '/settings/'); switchView();" id="o-account">Account</a>
+      <a class="option" onclick="history.pushState('', '', '/settings/banking/'); switchView();" id="o-banking">Banking</a>
+      <a class="option" onclick="history.pushState('', '', '/settings/notifications/'); switchView();" id="o-notifications">Notifications</a>
+      <a class="option" onclick="history.pushState('', '', '/settings/help/'); switchView();" id="o-help">Help</a>
+      <a class="option" href="/logout/">Logout</a>
+    </div>
+  </div>
+  <div class='cell spacer'></div>
+  <div class='cell' id="sidebar-body"></div>
+</div>
 
 <script type='text/javascript'>
   switchView()
 
-  function switchView(view) {
+  function switchView() {
+    var view = window.location.pathname.split("/")[2]
     var body = document.getElementById("sidebar-body")
-    view = window.location.pathname.split("/")[2]
 
     if (view == "notifications") {
       toggle(document.getElementById('o-notifications'))
       body.innerHTML = " \
-      <h1>Notifications</h1> \
-      <p>Edit your alerts here.</p>"
+      <div class='block'> \
+        <h1>Notifications</h1> \
+        <p>Edit your alerts here.</p> \
+      </div>"
     } else if (view == "banking") {
       toggle(document.getElementById('o-banking'))
       body.innerHTML = " \
-      <h1>Banking</h1> \
-      <p>Edit your banking information here.</p>"
-    } else if (view == "security") {
-      toggle(document.getElementById('o-security'))
-      body.innerHTML = " \
-      <h1>Security</h1> \
-      <p>Edit your security preferences here.</p>"
+      <div class='inline' style='text-align:center'> \
+        <h2>Account Transfer</h2> \
+        <div class='toggle'> \
+          <div class='option selected' onclick='toggle(this); toggleAccount(this)'>Deposit</div> \
+          <div class='option' onclick='toggle(this); toggleAccount(this)'>Withdraw</div> \
+        </div> \
+          <form> \
+            <input type='text' placeholder='$0.00' style='text-align:center' spellcheck='false' autocomplete='off' maxlength='40' id='login-username'><br> \
+            <input type='submit' value='Transfer'><br> \
+          </form> \
+      </div> \
+      <h2>Linked Accounts</h2> \
+      "
     } else if (view == "help") {
       toggle(document.getElementById('o-help'))
       body.innerHTML = " \
@@ -42,15 +107,52 @@
     } else {
       toggle(document.getElementById('o-account'))
       body.innerHTML = " \
-      <h1>Account Information</h1> \
-      <p>Edit your account information here.</p> \
-      <div style='width: 450px; margin-top: 60px;'> \
-        <label>Name</label><input type='text' placeholder='Matthew Helms' spellcheck='false' autocomplete='off' maxlength='40' id='login-username'><br> \
-        <label>Username</label><input type='text' placeholder='helms107' spellcheck='false' autocomplete='off' maxlength='40' id='login-username'><br> \
-        <label>Bio</label><input type='text' placeholder='' spellcheck='false' autocomplete='off' maxlength='40' id='login-username'><br> \
-        <label>Email</label><input type='text' placeholder='matthewthelms@yahoo.com' spellcheck='false' autocomplete='off' maxlength='40' id='login-username'><br> \
-        <input type='submit' value='Save'> \
-      </div> "
+      <div class='box padding'> \
+        <form onsubmit='updateAccount(); return false' id='account-form' class='bottom'> \
+          <h2>Account Information</h2> \
+          <img src='/resources/images/profile.png' class='picture'> \
+          <div class='inline'> \
+            <label>Name</label> \
+            <label>Username</label> \
+            <label>Bio</label> \
+            <label>Email</label> \
+            <label>Phone</label> \
+          </div> \
+          <div class='inline'> \
+            <input type='text' value='<?php echo $my_account['fullname'] ?>' placeholder='<?php echo $my_account['fullname'] ?>' spellcheck='false' autocomplete='off' maxlength='40' id='login-username'><br> \
+            <input type='text' value='<?php echo $my_account['username'] ?>' placeholder='<?php echo $my_account['username'] ?>' spellcheck='false' autocomplete='off' maxlength='40' id='login-username'><br> \
+            <input type='text' value='' placeholder='' spellcheck='false' autocomplete='off' maxlength='40' id='login-username'><br> \
+            <input type='text' value='<?php echo $my_account['email'] ?>' placeholder='<?php echo $my_account['email'] ?>' spellcheck='false' autocomplete='off' maxlength='40' id='login-username'><br> \
+            <input type='text' value='' placeholder='' spellcheck='false' autocomplete='off' maxlength='40' id='login-username'><br> \
+            <input type='submit' value='Save'><br> \
+          </div> \
+        </form> \
+        <form onsubmit='updatePassword(); return false' id='password-form'> \
+          <h2>Change Password</h2> \
+          <div class='inline'> \
+            <label>Old Password</label> \
+            <label>New Password</label> \
+            <label>New Password</label> \
+          </div> \
+          <div class='inline'> \
+            <input type='password' autocomplete='off' maxlength='40' id='login-username'><br> \
+            <input type='password' autocomplete='off' maxlength='40' id='login-username'><br> \
+            <input type='password' autocomplete='off' maxlength='40' id='login-username'><br> \
+            <input type='submit' value='Save'><br> \
+          </div> \
+        </form> \
+      </div> \
+      "
+    }
+  }
+
+  function toggleAccount(sender) {
+    if (sender.innerHTML == "Edit Account") {
+      document.getElementById("account-form").style.height = "310px"
+      document.getElementById("password-form").style.height = "0px"
+    } else if (sender.innerHTML == "Change Password") {
+      document.getElementById("account-form").style.height = "0px"
+      document.getElementById("password-form").style.height = "150px"
     }
   }
 

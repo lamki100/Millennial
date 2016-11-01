@@ -15,7 +15,166 @@ if ($token) {
   <title>Trended</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <link rel='stylesheet' href='/resources/main.css'>
+  <link rel='stylesheet' href='/resources/main-white.css'>
+  <style type='text/css'>
+  @font-face {
+      font-family: "Aliens";
+      src: url("/resources/fonts/aliens.ttf") format('truetype');
+      font-weight: 400;
+  }
+
+  @font-face {
+    font-family: "Gotham";
+    src: url("/resources/fonts/gotham-book.otf") format('opentype');
+    font-weight: 400;
+  }
+
+  @font-face {
+      font-family: "Gotham";
+      src: url("/resources/fonts/gotham-bold.otf") format('opentype');
+      font-weight: 600;
+  }
+
+  @font-face {
+      font-family: "Gotham";
+      src: url("/resources/fonts/gotham-light.otf") format('opentype');
+      font-weight: 300;
+  }
+
+  @font-face {
+    font-family: "Open";
+    src: url("/resources/fonts/open.woff") format('woff');
+    font-weight: 400;
+  }
+
+  @font-face {
+      font-family: "Open";
+      src: url("/resources/fonts/open-semi-bold.woff") format('woff');
+      font-weight: 600;
+  }
+
+  @font-face {
+      font-family: "Open";
+      src: url("/resources/fonts/open-light.woff") format('woff');
+      font-weight: 300;
+  }
+
+  @font-face {
+      font-family: "Open";
+      src: url("/resources/fonts/open-bold.woff") format('woff');
+      font-weight: 700;
+  }
+
+  * { padding: 0; margin: 0; outline:0; border:0; border-radius:0; background:none; text-decoration:none; font:inherit; letter-spacing: inherit; -webkit-appearance: none; -moz-appearance: none; box-sizing: border-box; }
+
+  #header, #master, #center { max-width: 980px; }
+  #master { margin: 0 auto; }
+
+  body {
+    font-family: "Open", "Helvetica Neue", sans-serif;
+    color: #222;
+    -webkit-font-smoothing: antialiased;
+    font-size: 13px;
+    background-color: #fbfbfb;
+    /*background: url('resources/images/bg.png') center center no-repeat;*/
+    background-size: cover;
+  }
+
+  #header {
+    margin: 0 auto;
+    /*padding-top: 25px;*/
+    padding: 16px 0 10px;
+    text-align: right;
+    /*height: 92px;*/
+  }
+
+  #header a {
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: top;
+    color: #222;
+  }
+
+  #header-logo {
+    float: left;
+    font-family: "Aliens";
+    line-height: 0;
+    font-size: 27px;
+    color: #000;
+    letter-spacing: 12px;
+    margin-top: 10px;
+  }
+
+  #header-globe {
+    vertical-align: middle;
+    height: 48px;
+    border-right: 1px solid #eee;
+    padding-right: 12px;
+    margin-right: 18px;
+    margin-top: -10px;
+  }
+
+  #header-search {
+    margin: 0;
+    margin-top: 0px;
+    border: 0;
+    background: url("/resources/images/search-black.png") left center no-repeat;
+    background-size: 40px;
+    width: 0;
+    height: 0;
+    padding: 23px;
+    cursor: pointer;
+    transition: width .3s, padding-left .3s;
+    line-height: normal !important;
+    position: absolute;
+    left: 45%;
+  }
+
+  #header-account {
+    /*margin-top: -1px;*/
+    /*margin-left: 18px;*/
+    padding: 28px;
+    background: url("/resources/images/account-black.png") center center no-repeat;
+    background-size: contain;
+  }
+
+  #header-create {
+    margin-top: -9px;
+    margin-left: 19px;
+    font-size: 67px;
+    line-height: 1;
+    font-weight: 300;
+  }
+
+  #header-settings {
+    margin-top: 2px;
+    margin-left: 19px;
+    padding: 22px;
+    background: url("/resources/images/settings-black.png") center center no-repeat;
+    background-size: contain;
+  }
+
+  #header-search:focus {
+    width: 250px;
+    padding-left: 52px;
+    cursor: auto;
+  }
+
+  #header-results {
+    display: inline-block;
+    position: absolute;
+    margin-top: 52px;
+    width: 255px;
+    text-align: left;
+    transition: height .3s, padding-top .3s;
+    background-color: #f4f4f4;
+    padding: 0 18px;
+    overflow: hidden;
+    text-transform: uppercase;
+    height: 0;
+    font-size: 13px;
+  }
+  </style>
 </head>
 <script type='text/javascript'>
   function post(url, data, callback) {
@@ -37,12 +196,10 @@ if ($token) {
     results.innerHTML = "Search: <b>" + search + "</b>"
     if (search != "") {
       results.style.height = "300px"
-      results.style.paddingTop = "20px"
-      results.style.borderBottom = "2px solid rgba(255,255,255,.6)"
+      results.style.paddingTop = "18px"
     } else {
       results.style.height = "0"
       results.style.paddingTop = "0"
-      results.style.borderBottom = "0"
     }
   }
 
@@ -52,11 +209,12 @@ if ($token) {
   }
 </script>
 <body>
-  <div id="header">
-    <a href="/" id="header-logo">TRENDED</a>
-    <div id="header-results"></div>
-    <input type='text' spellcheck='false' autocomplete='off' onblur="this.value=''; search()" id="header-search" placeholder="Search" oninput="search()">
-    <a href='<?php if ($my_account) echo "/user/".$my_account["username"]."/"; else echo "/login/" ?>' id="header-account"></a>
-    <?php if ($my_account) echo "<a href='/settings/account/' id='header-settings'></a>" ?>
+  <div class='box'>
+    <div id="header">
+      <a href="/" id="header-logo"><img src='/resources/images/globe-black.png' id='header-globe'>TRENDED</a>
+      <div id="header-results"></div>
+      <!-- <input type='text' spellcheck='false' autocomplete='off' onblur="this.value=''; search()" id="header-search" placeholder="Search" oninput="search()"> -->
+      <?php if ($my_account) echo "<a href='/create/' id='header-created'></a><a href='/user/".$my_account["username"]."/' id='header-account'></a>"; else echo "<a href='/login/' id='header-account'></a>" ?>
+    </div>
   </div>
   <div id="master">
