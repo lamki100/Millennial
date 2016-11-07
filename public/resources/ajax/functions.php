@@ -2,18 +2,9 @@
 
 include "../../../inc/db.php";
 
-$token = isset($_COOKIE["token"]) ? $_COOKIE['token'] : null;
-// echo $token;
-// $my_account = null;
-// if ($token) {
-//   $my_account = $db->query("SELECT * FROM accounts WHERE token='$token'")->fetch();
-//   if (!$my_account) setcookie("token", "", time() - 10000);
-//   else $my_account = $my_account['id'];
-// }
-// echo $my_account;
-
 // TODO FILTER DATA FOR SQL INJECTION AND THE LIKE
 $func = isset($_POST["func"]) ? $_POST["func"] : null;
+$token = isset($_COOKIE["token"]) ? $_COOKIE['token'] : null;
 
 if ($func == "register") {
   $fullname = isset($_POST["fullname"]) ? trim($_POST["fullname"]) : null;
@@ -28,7 +19,7 @@ if ($func == "register") {
       setCookie("token", $token, time()+3600*24*365, "/");
       echo json_encode(array("status"=>"ok"));
     } else echo json_encode(array("status"=>"failed", "message"=>"Sorry, that username or email is taken"));
-  } else echo json_encode(array("status"=>"failed", "message"=>"Please fill in all fields."));
+  } else echo json_encode(array("status"=>"failed", "message"=>"Please fill in all fields"));
 }
 
 else if ($func == "login") {
@@ -41,9 +32,9 @@ else if ($func == "login") {
       if ($account['password'] == $password) {
         setCookie("token", $account['token'], time()+3600*24*365, "/");
         echo json_encode(array("status"=>"ok"));
-      } else echo json_encode(array("status"=>"failed", "message"=>"Your password is incorrect."));
-    } else echo json_encode(array("status"=>"failed", "message"=>"That username/email doesn't belong to an account."));
-  } else echo json_encode(array("status"=>"failed", "message"=>"Please fill in all fields."));
+      } else echo json_encode(array("status"=>"failed", "message"=>"Your password is incorrect"));
+    } else echo json_encode(array("status"=>"failed", "message"=>"That username/email doesn't belong to an account"));
+  } else echo json_encode(array("status"=>"failed", "message"=>"Please fill in all fields"));
 }
 
 else if ($token && $func == "updateAccount") {
@@ -55,9 +46,9 @@ else if ($token && $func == "updateAccount") {
   if ($username && $email && $fullname) {
     if ($db->query("SELECT COUNT(*) FROM accounts WHERE (username='$username' or email='$email') and token!='$token'")->fetchColumn() == 0) {
       $db->query("UPDATE accounts SET username='$username', fullname='$fullname', email='$email', bio='$bio' WHERE token='$token'");
-      echo json_encode(array("status"=>"ok"));
-    } else echo json_encode(array("status"=>"failed", "message"=>"That username or email is taken."));
-  } else echo json_encode(array("status"=>"failed", "message"=>"Something went wrong."));
+      echo json_encode(array("status"=>"ok", "message"=>"Changes Applied"));
+    } else echo json_encode(array("status"=>"failed", "message"=>"That username or email is taken"));
+  } else echo json_encode(array("status"=>"failed", "message"=>"Please fill in all fields"));
 } else {
-  echo json_encode(array("status"=>"failed", "message"=>"Something went terribly wrong."));
+  echo json_encode(array("status"=>"failed", "message"=>"That function does not exist"));
 }

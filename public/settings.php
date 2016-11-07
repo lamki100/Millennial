@@ -1,7 +1,7 @@
 <?php include "../inc/header.php" ?>
 
 <style>
-#sidebar {
+#sidebar, #sidebar #body {
   display: table;
   table-layout: fixed;
   width: 100%;
@@ -22,16 +22,16 @@
   padding: 23px 19px;
   display: block;
   font-weight: 300;
+  /*font-family: "Gotham";*/
   text-decoration: none;
   border-left: 5px solid transparent;
+  /*font-size: 14px;*/
+  color: #222;
 }
 
 #sidebar #options .selected {
-  background-color: #fafafa;
-  /*border-color: rgba(60,140,255,.8);*/
+  background-color: #f9f9f9;
   border-color: #444;
-  /*color: rgba(60,140,255,1);*/
-  /*font-weight: 700;*/
 }
 
 #sidebar #options .option:active {
@@ -39,7 +39,7 @@
 }
 
 .spacer {
-  width: 10px;
+  width: 31px;
 }
 
 </style>
@@ -56,7 +56,7 @@
     </div>
   </div>
   <div class='cell spacer'></div>
-  <div class='cell' id="sidebar-body"></div>
+  <div class='cell' id="body"></div>
 </div>
 
 <script type='text/javascript'>
@@ -64,7 +64,7 @@
 
   function switchView() {
     var view = window.location.pathname.split("/")[2]
-    var body = document.getElementById("sidebar-body")
+    var body = document.getElementById("body")
 
     if (view == "notifications") {
       toggle(document.getElementById('o-notifications'))
@@ -76,28 +76,28 @@
     } else if (view == "banking") {
       toggle(document.getElementById('o-banking'))
       body.innerHTML = " \
-      <div class='box padding'> \
-        <form> \
-          <h2>Linked Accounts</h2> \
-          <div class='inline'> \
-            <label>Account #</label> \
-            <label>Routing #</label> \
-          </div> \
-          <div class='inline'> \
-            <input type='text' spellcheck='false' autocomplete='off' maxlength='40' id='account-fullname'><br> \
-            <input type='text' spellcheck='false' autocomplete='off' maxlength='40' id='account-email'><br> \
-            <input type='submit' value='Add Account'><br> \
-          </div> \
-        </form> \
+      <div class='cell'> \
+        <div class='box padding'> \
+          <form> \
+            <h2>Accounts</h2> \
+            <label>Account #</label> <input type='text' spellcheck='false' autocomplete='off' maxlength='40' id='account-fullname'> \
+            <label>Routing #</label> <input type='text' spellcheck='false' autocomplete='off' maxlength='40' id='account-email'> \
+            <input type='submit' value='Add Account'> \
+          </form> \
+        </div> \
       </div> \
-      <div class='box padding'> \
-        <form> \
-          <div class='toggle'> \
-            <div class='option selected' onclick='toggle(this); toggleAccount(this)'>Deposit</div><div class='option' onclick='toggle(this); toggleAccount(this)'>Withdraw</div> \
-          </div> \
-          <input type='text' placeholder='$0.00' style='text-align:center' spellcheck='false' autocomplete='off' maxlength='40' id='login-username'><br> \
-          <input type='submit' value='Transfer'><br> \
-        </form> \
+      <div class='cell spacer'></div> \
+      <div class='cell'> \
+        <div class='box padding'> \
+          <form> \
+            <h2>Transfer Money</h2> \
+            <div class='toggle'> \
+              <div class='option selected' onclick='toggle(this); toggleAccount(this)'>To Trended</div><div class='option' onclick='toggle(this); toggleAccount(this)'>To Bank</div> \
+            </div> \
+            <input type='text' placeholder='$0.00' style='text-align:center' spellcheck='false' autocomplete='off' maxlength='40' id='login-username'> \
+            <input type='submit' value='Transfer'> \
+          </form> \
+        </div> \
       </div> \
       "
     } else if (view == "help") {
@@ -110,39 +110,29 @@
     } else {
       toggle(document.getElementById('o-account'))
       body.innerHTML = " \
-      <div class='box padding'> \
-        <form onsubmit='updateAccount(); return false'> \
-          <img src='/resources/images/profile.png' class='picture box'> \
-          <div class='inline'> \
-            <label>Name</label> \
-            <label>Username</label> \
-            <label>Email</label> \
-            <label>Bio</label> \
-          </div> \
-          <div class='inline'> \
-            <input type='text' value='<?php echo $my_account['fullname'] ?>' placeholder='<?php echo $my_account['fullname'] ?>' spellcheck='false' autocomplete='off' maxlength='40' id='account-fullname'><br> \
-            <input type='text' value='<?php echo $my_account['username'] ?>' placeholder='<?php echo $my_account['username'] ?>' spellcheck='false' autocomplete='off' maxlength='40' id='account-username'><br> \
-            <input type='text' value='<?php echo $my_account['email'] ?>' placeholder='<?php echo $my_account['email'] ?>' spellcheck='false' autocomplete='off' maxlength='40' id='account-email'><br> \
-            <textarea id='account-bio' rows='2' spellcheck='false' autocomplete='off' maxlength='64'><?php echo $my_account['bio'] ?></textarea><br> \
-            <input type='submit' value='Save'><br> \
-          </div> \
-        </form> \
+      <div class='cell'> \
+        <div class='box padding'> \
+          <form onsubmit='updateAccount(); return false'> \
+            <h2>Account Information</h2> \
+            <img src='/resources/images/profile.png' class='picture box'> \
+            <label>Name</label> <input type='text' id='account-fullname' value='<?php echo $my_account['fullname'] ?>' spellcheck='false' autocomplete='off' maxlength='40'> \
+            <label>Username</label> <input type='text' id='account-username' value='<?php echo $my_account['username'] ?>' spellcheck='false' autocomplete='off' maxlength='40'> \
+            <label>Email</label> <input type='text' id='account-email' value='<?php echo $my_account['email'] ?>' spellcheck='false' autocomplete='off' maxlength='40'> \
+            <label>Bio</label> <textarea id='account-bio' rows='2' spellcheck='false' autocomplete='off' maxlength='64'><?php echo $my_account['bio'] ?></textarea> \
+            <input type='submit' value='Apply Changes'> \
+          </form> \
+        </div> \
       </div> \
-      <div class='box padding'> \
-        <form onsubmit='updatePassword(); return false' id='password-form'> \
-          <h2>Change Your Password</h2> \
-          <div class='inline'> \
-            <label>Old Password</label> \
-            <label>New Password</label> \
-            <label>New Password</label> \
-          </div> \
-          <div class='inline'> \
-            <input type='password' autocomplete='off' maxlength='40' id='login-username'><br> \
-            <input type='password' autocomplete='off' maxlength='40' id='login-username'><br> \
-            <input type='password' autocomplete='off' maxlength='40' id='login-username'><br> \
-            <input type='submit' value='Save'><br> \
-          </div> \
-        </form> \
+      <div class='cell spacer'></div> \
+      <div class='cell'> \
+        <div class='box padding'> \
+          <form onsubmit='updatePassword(); return false' id='password-form'> \
+            <h2>Update Password</h2> \
+            <label>Old Password</label> <input type='password' autocomplete='off' maxlength='40' id='login-username'> \
+            <label>New Password</label> <input type='password' autocomplete='off' maxlength='40' id='login-username'> \
+            <input type='submit' value='Apply Changes'> \
+          </form> \
+        </div> \
       </div> \
       "
     }
@@ -160,15 +150,7 @@
 
     post("/resources/ajax/functions.php", {"func": "updateAccount", "email": email, "fullname": fullname, "username": username, "bio": bio}, function(r) {
       r = JSON.parse(r)
-      if (r["status"] == "ok") {
-        alert("Updated")
-      } else {
-        alert(r['message'])
-        // var message = document.getElementById("account-message")
-        // message.innerHTML = r["message"]
-        // message.className = "message error"
-        // setTimeout(function() { message.className = "message" }, 1100)
-      }
+      addAlert(r['message'])
     })
   }
 </script>

@@ -1,6 +1,5 @@
-<?php include "../inc/header.php" ?>
-
 <?php
+  include "../inc/db.php";
   $username = isset($_GET["data"]) ? $_GET["data"] : null;
   $account = null;
   if ($username) {
@@ -9,38 +8,39 @@
   }
 ?>
 
+<?php include "../inc/header.php" ?>
+
 <style>
 #follow {
   display: inline-block;
   position: relative;
-  top: -9px;
-  padding: 12px 17px;
-  margin-left: 22px;
-  margin-bottom: 0px;
+  top: -10px;
+  padding: 13px 17px;
+  margin-left: 23px;
+  margin-bottom: -3px;
   font-size: 13px;
-  letter-spacing: 0px;
 }
 
 .user-picture {
-  border: none !important;
+  /*border: none !important;*/
   display: inline-block !important;
-  vertical-align: middle;
-  margin: 0 !important;
+  margin: 0 0 0 0px !important;
 }
 
 .user-text {
   display: inline-block !important;
   vertical-align: middle;
-  margin-left: 45px;
-  text-align: left;
-  max-width: 40%;
+  margin-left: 35px;
+  text-align: justify;
+  max-width: 37%;
+  margin-top: 4px;
 }
 </style>
 
 <div class='bottom'>
   <img src='/resources/images/profile.png' class='user-picture picture box'>
   <div class='user-text'>
-    <h1>
+    <h1 style='text-align:left'>
       <?php
       echo $account["username"];
       if ($my_account) {
@@ -48,7 +48,7 @@
         else echo "<input type='submit' value='Follow' id='follow' onclick='follow()'>";
       } else echo "<input type='submit' value='Follow' id='follow' onclick=\"window.location='/login/'\">";
       ?>
-      <h3><?php echo "<b>".$account['fullname']."</b> - ".$account['bio'] ?></h3>
+      <h3><?php echo "<b>".$account['fullname']."</b>"; if ($account['bio']) echo " <span style='font-weight:300'>-</span> ".$account['bio']; ?></h3>
     </h1>
   </div>
 </div>
