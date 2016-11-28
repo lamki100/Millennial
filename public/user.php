@@ -10,33 +10,6 @@
 
 <?php include "../inc/header.php" ?>
 
-<style>
-#follow {
-  display: inline-block;
-  position: relative;
-  top: -10px;
-  padding: 13px 17px;
-  margin-left: 23px;
-  margin-bottom: -3px;
-  font-size: 13px;
-}
-
-.user-picture {
-  /*border: none !important;*/
-  display: inline-block !important;
-  margin: 0 0 0 0px !important;
-}
-
-.user-text {
-  display: inline-block !important;
-  vertical-align: middle;
-  margin-left: 35px;
-  text-align: justify;
-  max-width: 37%;
-  margin-top: 4px;
-}
-</style>
-
 <div class='bottom'>
   <img src='/resources/images/profile.png' class='user-picture picture box'>
   <div class='user-text'>

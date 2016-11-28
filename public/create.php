@@ -14,7 +14,7 @@
       <label>Duration</label> <input type='text' spellcheck='false' autocomplete='off' maxlength='40' id='login-username'>
       <input type='submit' value='Create Bet'>
     </form>
-    <form onsubmit='return false' id="optional-form" style="height: 350px">
+    <form onsubmit='return false' id="optional-form" style="height: 290px">
       <label>Title</label> <input type='text' spellcheck='false' autocomplete='off' maxlength='40' id='login-username'>
       <label>Outcomes</label> <input type='text' spellcheck='false' autocomplete='off' maxlength='40' id='login-username'>
       <input type='text' spellcheck='false' autocomplete='off' maxlength='40' id='login-username'>
@@ -27,7 +27,7 @@
 <script>
 function toggleBet(sender) {
   if (sender.innerHTML == "Optional") {
-    document.getElementById("optional-form").style.height = "350px"
+    document.getElementById("optional-form").style.height = "290px"
     document.getElementById("numerical-form").style.height = "0px"
   } else if (sender.innerHTML == "Numerical") {
     document.getElementById("optional-form").style.height = "0px"

@@ -49,6 +49,18 @@ else if ($token && $func == "updateAccount") {
       echo json_encode(array("status"=>"ok", "message"=>"Changes Applied"));
     } else echo json_encode(array("status"=>"failed", "message"=>"That username or email is taken"));
   } else echo json_encode(array("status"=>"failed", "message"=>"Please fill in all fields"));
-} else {
-  echo json_encode(array("status"=>"failed", "message"=>"That function does not exist"));
 }
+
+else if ($token && $func == "addBank") {
+  $id = $db->query("SELECT id FROM accounts WHERE token='$token'")->fetch()["id"];
+  $account = isset($_POST["account"]) ? trim($_POST["account"]) : null;
+  $routing = isset($_POST["routing"]) ? trim($_POST["routing"]) : null;
+  if ($id && $account && $routing) {
+    $db->query("INSERT INTO banks VALUES (null, '$id', '$account', '$routing')");
+    echo json_encode(array("status"=>"ok", "message"=>"Your bank was added"));
+  } else {
+    echo json_encode(array("status"=>"failed", "message"=>"Please fill in all fields"));
+  }
+}
+
+ else echo json_encode(array("status"=>"failed", "message"=>"That function does not exist"));

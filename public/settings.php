@@ -1,53 +1,8 @@
 <?php include "../inc/header.php" ?>
 
-<style>
-#sidebar, #sidebar #body {
-  display: table;
-  table-layout: fixed;
-  width: 100%;
-}
-
-.cell {
-  display: table-cell;
-  vertical-align: top;
-}
-
-#sidebar #options {
-  width: 180px;
-  text-align: left;
-}
-
-#sidebar #options .option {
-  -webkit-user-select: none;
-  padding: 23px 19px;
-  display: block;
-  font-weight: 300;
-  /*font-family: "Gotham";*/
-  text-decoration: none;
-  border-left: 5px solid transparent;
-  /*font-size: 14px;*/
-  color: #222;
-}
-
-#sidebar #options .selected {
-  background-color: #f9f9f9;
-  border-color: #444;
-}
-
-#sidebar #options .option:active {
-  background-color: #f8f8f8;
-}
-
-.spacer {
-  width: 31px;
-}
-
-</style>
-
 <div id="sidebar">
   <div class='cell' id="options">
     <div class='box'>
-      <!-- <a class='option' id='pic'></a> -->
       <a class="option" onclick="history.pushState('', '', '/settings/'); switchView();" id="o-account">Account</a>
       <a class="option" onclick="history.pushState('', '', '/settings/banking/'); switchView();" id="o-banking">Banking</a>
       <a class="option" onclick="history.pushState('', '', '/settings/notifications/'); switchView();" id="o-notifications">Notifications</a>
@@ -78,10 +33,10 @@
       body.innerHTML = " \
       <div class='cell'> \
         <div class='box padding'> \
-          <form> \
-            <h2>Accounts</h2> \
-            <label>Account #</label> <input type='text' spellcheck='false' autocomplete='off' maxlength='40' id='account-fullname'> \
-            <label>Routing #</label> <input type='text' spellcheck='false' autocomplete='off' maxlength='40' id='account-email'> \
+          <form onsubmit='addBank(); return false'> \
+            <h2>Bank Accounts</h2> \
+            <input type='text' placeholder='Account Number' spellcheck='false' autocomplete='off' maxlength='40' id='bank-account'> \
+            <input type='text' placeholder='Routing Number' spellcheck='false' autocomplete='off' maxlength='40' id='bank-routing'> \
             <input type='submit' value='Add Account'> \
           </form> \
         </div> \
@@ -89,12 +44,26 @@
       <div class='cell spacer'></div> \
       <div class='cell'> \
         <div class='box padding'> \
-          <form> \
-            <h2>Transfer Money</h2> \
-            <div class='toggle'> \
-              <div class='option selected' onclick='toggle(this); toggleAccount(this)'>To Trended</div><div class='option' onclick='toggle(this); toggleAccount(this)'>To Bank</div> \
+          <form onsubmit='transfer(); return false'> \
+            <h2>Make a Transfer</h2> \
+            <label>Transfer To</label><div class='toggle' id='transfer-type'> \
+              <div class='option selected' onclick='toggle(this); toggleAccount(this)'>Trended</div><div class='option' onclick='toggle(this); toggleAccount(this)'>Bank</div> \
             </div> \
-            <input type='text' placeholder='$0.00' style='text-align:center' spellcheck='false' autocomplete='off' maxlength='40' id='login-username'> \
+            <label>Account</label><div class='toggle' id='transfer-type'>" +
+            <?php
+            echo "\"";
+            $accountid = $my_account['id'];
+            $banks = $db->query("SELECT * FROM banks WHERE accountid='$accountid' LIMIT 4");
+            $first = true;
+            while ($row = $banks->fetch()) {
+              if ($first) echo "<div class='option selected' onclick='toggle(this); toggleAccount(this)'>****".substr($row['bankaccount'], 0, 4)."</div>";
+              else echo "<div class='option' onclick='toggle(this); toggleAccount(this)'>****".substr($row['bankaccount'], 0, 4)."</div>";
+              $first = false;
+            }
+            echo "\"+";
+            ?>
+            "</div> \
+            <label>Amount</label><input type='text' placeholder='$0.00' style='text-align:center' spellcheck='false' autocomplete='off' maxlength='40' id='transfer-amount'> \
             <input type='submit' value='Transfer'> \
           </form> \
         </div> \
@@ -152,6 +121,20 @@
       r = JSON.parse(r)
       addAlert(r['message'])
     })
+  }
+
+  function addBank() {
+    var routing = document.getElementById("bank-routing").value
+    var account = document.getElementById("bank-account").value
+
+    post("/resources/ajax/functions.php", {"func": "addBank", "routing": routing, "account": account}, function(r) {
+      r = JSON.parse(r)
+      addAlert(r['message'])
+    })
+  }
+
+  function transfer() {
+
   }
 </script>
 

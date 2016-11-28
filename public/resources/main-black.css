@@ -26,10 +26,10 @@ input, textarea {
   margin-bottom: 6px;
   padding: 15px 12px;
   line-height: 18px;
-  background-color: white;
-  border: 1px solid #ddd;
-  box-shadow: 0 1px 2px rgba(0,0,0,.1);
+  /*background-color: white;*/
+  border: 1px solid #333;
   resize: none;
+  color: white;
 }
 
 input[type='submit'] {
@@ -43,7 +43,7 @@ input[type='submit'] {
   font-weight: 600;
   text-transform: uppercase;
   font-family: "Gotham";
-  color: rgba(40,130,255,1);
+  /*color: rgba(40,130,255,1);*/
   border-color: rgba(40,130,255,.6);
 }
 
@@ -65,15 +65,14 @@ input[type='submit']:active {
   min-width: 135px;
   font-weight: 600;
   text-transform: uppercase;
-  background-color: #eee;
+  background-color: #222;
   font-family: "Gotham";
   display: inline-block;
-  color: rgba(40,130,255,.9);
-  box-shadow: 0 1px 2px rgba(0,0,0,.17);
+  /*color: rgba(40,130,255,.9);*/
 }
 
 .toggle .option:active {
-  background-color: #ddd !important;
+  background-color: #333 !important;
 }
 
 .toggle .selected, .toggle .selected:active {
@@ -136,7 +135,7 @@ b {
 }
 
 ::-webkit-input-placeholder {
-  color: rgba(0,0,0,.5);
+  color: rgba(255,255,255,.5);
 }
 
 
@@ -195,10 +194,10 @@ b {
 
 body {
   font-family: "Open", "Helvetica Neue", sans-serif;
-  color: #222;
+  color: white;
   -webkit-font-smoothing: antialiased;
   font-size: 13px;
-  background-color: #fafafa;
+  background-color: rgb(16,16,16);
   background-size: cover;
 }
 
@@ -212,7 +211,7 @@ body {
   text-decoration: none;
   display: inline-block;
   vertical-align: top;
-  color: #222;
+  color: white;
 }
 
 #header-logo {
@@ -238,7 +237,7 @@ body {
   width: 0;
   height: 0;
   border: 0;
-  background: url("/resources/images/search-black.png") left center no-repeat;
+  background: url("/resources/images/search.png") left center no-repeat;
   background-size: 45px;
   padding: 28px;
   cursor: pointer;
@@ -248,7 +247,7 @@ body {
 #header-account {
   margin-left: 6px;
   padding: 30px;
-  background: url("/resources/images/account-black.png") center center no-repeat;
+  background: url("/resources/images/account.png") center center no-repeat;
   background-size: contain;
 }
 
@@ -330,7 +329,7 @@ body {
 }
 
 #sidebar #options {
-  width: 200px;
+  width: 180px;
   text-align: left;
 }
 
@@ -343,28 +342,29 @@ body {
   text-decoration: none;
   border-left: 4px solid transparent;
   /*font-size: 14px;*/
-  color: #222;
+  color: white;
 }
 
 #sidebar #options .selected {
-  background-color: #f9f9f9;
-  border-color: #444;
+  background-color: #3a3a3a;
+  border-color: #ccc;
 }
 
 #sidebar #options .option:active {
-  background-color: #f8f8f8;
+  background-color: #333;
 }
 
 .spacer {
-  width: 20px;
+  width: 30px;
 }
 
 /* ----------- PAGES -------------------- */
 
 .box {
-  box-shadow: 0 1px 2px rgba(0,0,0,.2);
-  background-color: white;
-  margin-bottom: 21px;
+  /*box-shadow: 0 1px 2px rgba(255,255,255,.2);*/
+  background-color: rgb(27,27,27);
+  /*border: 1px solid #333;*/
+  margin-bottom: 40px;
 }
 
 .padding {
@@ -376,7 +376,8 @@ body {
   display: block;
   vertical-align: middle;
   width: 192px;
-  border: 2px solid rgba(0,0,0,.03);
+  border: 2px solid rgba(255,255,255,.03);
+  background-color: #888;
   margin: 27px auto 20px !important;
   cursor: pointer;
 }
