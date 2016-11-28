@@ -185,3 +185,57 @@ CREATE TABLE Millenial.Bet_Source
     created_at TINYINT(1),
     updated_at TINYINT(1)
 );
+
+CREATE TABLE Millenial.Bank
+(
+    id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    name VARCHAR(256) NOT NULL,
+    created_at TINYINT(1),
+    updated_at TINYINT(1)
+);
+
+DELIMITER //
+CREATE PROCEDURE AddBank(IN bank_name VARCHAR(256))
+  BEGIN
+    INSERT INTO Millenial.Bank (name, created_at) 
+    VALUES (bank_name, NOW())
+    ON DUPLICATE UPDATE update_at=VALUES(created_at);
+  END //
+DELIMITER ;
+
+CREATE TABLE Millenial.User_Bank
+(
+    id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    user_id INT(11) NOT NULL,
+    bank_id INT(11) NOT NULL,
+    acount_number INT(11) NOT NULL,
+    created_at TINYINT(1),
+    updated_at TINYINT(1)
+);
+
+DELIMITER //
+CREATE PROCEDURE AddUserBank(IN user_id INT(11), IN bank_id INT(11))
+  BEGIN
+    INSERT INTO Millenial.User_Bank (user_id, bank_id, created_at) 
+    VALUES (user_id, bank_id, NOW())
+    ON DUPLICATE UPDATE update_at=VALUES(created_at);
+  END //
+DELIMITER ;
+
+CREATE TABLE Millenial.User_Account
+(
+    id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    user_id INT(11) NOT NULL,
+    account_balance INT(11) NOT NULL,
+    created_at TINYINT(1),
+    updated_at TINYINT(1)
+);
+
+DELIMITER //
+CREATE PROCEDURE AddUserAccount(IN user_id INT(11), IN account_balance INT(11))
+  BEGIN
+    INSERT INTO Millenial.User_Account (user_id, account_balance, created_at) 
+    VALUES (user_id, account_balance, NOW())
+    ON DUPLICATE UPDATE update_at=VALUES(created_at);
+  END //
+DELIMITER ;
