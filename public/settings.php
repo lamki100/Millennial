@@ -119,6 +119,9 @@
 
     post("/resources/ajax/functions.php", {"func": "updateAccount", "email": email, "fullname": fullname, "username": username, "bio": bio}, function(r) {
       r = JSON.parse(r)
+      if (r['status'] == "ok") {
+        
+      }
       addAlert(r['message'])
     })
   }
