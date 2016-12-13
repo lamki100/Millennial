@@ -17,8 +17,12 @@
       <?php
       echo $account["username"];
       if ($my_account) {
+        $accountid = $my_account['id'];
+        $accountid2 = $account['id'];
+        $isFollowing = $db->query("SELECT COUNT(*) FROM follow WHERE accountid='$accountid' and accountid2='$accountid2'")->fetch()[0];
         if ($my_account['id'] == $account['id']) echo "<input type='submit' value='Edit Account' id='follow' onclick=\"window.location='/settings/'\">";
-        else echo "<input type='submit' value='Follow' id='follow' onclick='follow()'>";
+        else if ($isFollowing) echo "<input type='submit' value='Following' id='follow' onclick='follow(); this.value=\"Follow\"'>";
+        else echo "<input type='submit' value='Follow' id='follow' onclick='follow(); this.value=\"Following\"'>";
       } else echo "<input type='submit' value='Follow' id='follow' onclick=\"window.location='/login/'\">";
       ?>
       <h3><?php echo "<b>".$account['fullname']."</b>"; if ($account['bio']) echo " <span style='font-weight:300'>-</span> ".$account['bio']; ?></h3>
@@ -56,7 +60,10 @@
 
 <script>
   function follow() {
-    alert("You will follow this account soon.")
+    post("/resources/ajax/functions.php", {"func": "follow", "accountid2": <?php echo $account['id'] ?>}, function(r) {
+      r = JSON.parse(r)
+      addAlert(r['message'])
+    })
   }
 </script>
 

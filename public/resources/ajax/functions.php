@@ -139,4 +139,23 @@ else if ($token && $func == "placeBet") {
   }
 }
 
+else if ($token && $func == "follow") {
+  $accountid = $my_account['id'];
+  $accountid2 = isset($_POST["accountid2"]) ? intval(trim($_POST["accountid2"])) : null;
+
+  if ($accountid2) {
+    $isFollowing = $db->query("SELECT COUNT(*) FROM follow WHERE accountid='$accountid' AND accountid2='$accountid2'")->fetch()[0];
+
+    if ($isFollowing) {
+      $db->query("DELETE FROM follow WHERE accountid='$accountid' AND accountid2='$accountid2'");
+      echo json_encode(array("status"=>"ok", "message"=>"Unfollowed"));
+    } else {
+      $db->query("INSERT INTO follow VALUES (null, '$accountid', '$accountid2')");
+      echo json_encode(array("status"=>"ok", "message"=>"Followed"));
+    }
+  } else {
+    echo json_encode(array("status"=>"failed", "message"=>"Following failed"));
+  }
+}
+
 else echo json_encode(array("status"=>"failed", "message"=>"That function does not exist"));
