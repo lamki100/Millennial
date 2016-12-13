@@ -1,6 +1,6 @@
 <?php include "../inc/header.php" ?>
 
-<h5 style='margin-top:50px; margin-bottom: 30px;'>Recently Created Bets</h5>
+<h5 style='margin-top:40px; margin-bottom: 30px;'>Recently Created Bets</h5>
 <div class='padding box' style="width:90%;margin:0 auto; padding: 20px">
   <?php
   $count = 0;
@@ -17,7 +17,7 @@
   ?>
 </div>
 
-<h5 style='margin-top:50px; margin-bottom: 30px;'>Recently Placed Bets</h5>
+<h5 style='margin-top:30px; margin-bottom: 30px;'>Recently Placed Bets</h5>
 <div class='padding box' style="width:90%;margin:0 auto; padding: 20px">
   <?php
   $count = 0;
