@@ -53,9 +53,10 @@ if ($token) {
   <div class='box' style='box-shadow: 0px 1px 2px rgba(0,0,0,.06)'>
     <div id="header">
       <a href="/" id="header-logo"><img src='/resources/images/globe-black.png' id='header-globe'>TRENDED</a>
+      <a href='/settings/banking/' id='header-balance'>$<?php echo number_format((float)$my_account['balance'], 2, '.', '') ?></a>
       <div id="header-results" class='box'></div>
       <input type='text' spellcheck='false' autocomplete='off' onblur="this.value=''; search()" id="header-search" placeholder="Search" oninput="search()">
-      <?php if ($my_account) echo "<a href='/create/' id='header-create'>+</a><a href='/user/".$my_account["username"]."/' id='header-account'></a>"; else echo "<a href='/login/' id='header-account'></a>" ?>
+      <?php if ($my_account) echo "<a onclick='document.getElementById(\"create-bet\").style.display=\"flex\"' id='header-create'>+</a><a href='/user/".$my_account["username"]."/' id='header-account'></a>"; else echo "<a href='/login/' id='header-account'></a>" ?>
     </div>
   </div>
   <div id="master">

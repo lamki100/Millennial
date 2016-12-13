@@ -26,11 +26,24 @@
   </div>
 </div>
 
-<div class='toggle' style='margin-bottom:0px;'>
-  <div class='option selected' onclick='toggle(this); toggleAccount(this)'>All</div><div class='option' onclick='toggle(this); toggleAccount(this)'>Ideas</div><div class='option' onclick='toggle(this); toggleAccount(this)'>Bets</div>
+<div class='toggle' style='margin-bottom:0px; width:60%; margin: 0 auto'>
+  <div class='option selected' onclick='toggle(this); toggleAccount(this)'>All</div>
+  <div class='option' onclick='toggle(this); toggleAccount(this)'>Ideas</div>
+  <div class='option' onclick='toggle(this); toggleAccount(this)'>Bets</div>
 </div>
-<div class='padding box'>
-  User activity will go here.
+<div class='padding box' style="width:90%;margin:0 auto; padding: 20px">
+  <?php
+  $accountid = $account['id'];
+  $query = $db->query("SELECT amount, outcome, betid FROM participants WHERE accountid='$accountid'");
+  while ($row = $query->fetch()) {
+    echo "<a href='/bet/".$row['betid']."' class='activity'>Placed a <i>$".$row['amount']."</i> bet on <i>".$row['outcome']."</i></a>";
+  }
+
+  $query = $db->query("SELECT title, id FROM bets WHERE accountid='$accountid'");
+  while ($row = $query->fetch()) {
+    echo "<a href='/bet/".$row['id']."' class='activity'>Created <i>".$row['title']."</i></a>";
+  }
+  ?>
 </div>
     <!-- <div style='display:block'>
       <div class='inline'>

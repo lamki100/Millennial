@@ -2,9 +2,11 @@
 
 <div id="center">
   <div style="width: 100%">
-    <div class="toggle">
-      <div class="option selected" onclick="toggle(this); toggleLogin(this)">Register</div><div class="option" onclick="toggle(this); toggleLogin(this)">Login</div>
-    </div>
+    <form>
+      <div class="toggle">
+        <div class="option selected" onclick="toggle(this); toggleLogin(this)">Register</div><div class="option" onclick="toggle(this); toggleLogin(this)">Login</div>
+      </div>
+    </form>
 
     <form onsubmit='login(); return false' id="login-form" style="height: 0px">
       <input type='text' placeholder='Email or Username' spellcheck='false' autocomplete='off' maxlength='40' id='login-username'>
@@ -33,7 +35,7 @@
     } else if (sender.innerHTML == "Login") {
       document.getElementById("login-username").focus();
       document.getElementById("register-form").style.height = "0px"
-      document.getElementById("login-form").style.height = "170px"
+      document.getElementById("login-form").style.height = "180px"
     }
   }
 

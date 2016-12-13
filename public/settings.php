@@ -33,11 +33,30 @@
       body.innerHTML = " \
       <div class='cell'> \
         <div class='box padding'> \
+          <h2>Manage Accounts</h2> \
           <form onsubmit='addBank(); return false'> \
-            <h2>Bank Accounts</h2> \
-            <input type='text' placeholder='Account Number' spellcheck='false' autocomplete='off' maxlength='40' id='bank-account'> \
-            <input type='text' placeholder='Routing Number' spellcheck='false' autocomplete='off' maxlength='40' id='bank-routing'> \
-            <input type='submit' value='Add Account'> \
+            <label>Account Number</label><input type='text' spellcheck='false' autocomplete='off' maxlength='40' id='bank-account'> \
+            <label>Routing Number</label><input type='text' spellcheck='false' autocomplete='off' maxlength='40' id='bank-routing'> \
+            <input type='submit' value='Link Account'> \
+          </form> \
+          <form onsubmit='removeBank(); return false'> \
+            <label>Linked Accounts</label><div class='toggle' id='transfer-type'>" +
+            <?php
+            echo "\"";
+            $accountid = $my_account['id'];
+            $banks = $db->query("SELECT * FROM banks WHERE accountid='$accountid' LIMIT 2");
+            $count = 0;
+            while ($row = $banks->fetch()) {
+              echo "<div class='option' onclick='toggleRemoveAccount=".$row['id']."; toggle(this)'>**** ".substr($row['bankaccount'], strlen($row['bankaccount'])-4, strlen($row['bankaccount']))."</div>";
+              $count += 1;
+            }
+            if ($count == 0) {
+              echo "<div class='option'>No Accounts Yet</div>";
+            }
+            echo "\"+";
+            ?>
+            "</div> \
+            <input type='submit' value='Unlink Account'> \
           </form> \
         </div> \
       </div> \
@@ -45,26 +64,28 @@
       <div class='cell'> \
         <div class='box padding'> \
           <form onsubmit='transfer(); return false'> \
-            <h2>Make a Transfer</h2> \
-            <label>Transfer To</label><div class='toggle' id='transfer-type'> \
-              <div class='option selected' onclick='toggle(this); toggleAccount(this)'>Trended</div><div class='option' onclick='toggle(this); toggleAccount(this)'>Bank</div> \
-            </div> \
-            <label>Account</label><div class='toggle' id='transfer-type'>" +
+            <h2>Transfer Funds</h2> \
+            <label>Bank Account</label><div class='toggle' id='transfer-type'>" +
             <?php
             echo "\"";
             $accountid = $my_account['id'];
-            $banks = $db->query("SELECT * FROM banks WHERE accountid='$accountid' LIMIT 4");
-            $first = true;
+            $banks = $db->query("SELECT * FROM banks WHERE accountid='$accountid' LIMIT 2");
+            $count = 0;
             while ($row = $banks->fetch()) {
-              if ($first) echo "<div class='option selected' onclick='toggle(this); toggleAccount(this)'>****".substr($row['bankaccount'], 0, 4)."</div>";
-              else echo "<div class='option' onclick='toggle(this); toggleAccount(this)'>****".substr($row['bankaccount'], 0, 4)."</div>";
-              $first = false;
+              echo "<div class='option' onclick='toggleTransferAccount=".$row['id']."; toggle(this)'>**** ".substr($row['bankaccount'], strlen($row['bankaccount'])-4, strlen($row['bankaccount']))."</div>";
+              $count += 1;
+            }
+            if ($count == 0) {
+              echo "<div class='option'>No Accounts Yet</div>";
             }
             echo "\"+";
             ?>
             "</div> \
+            <label>Destination</label><div class='toggle' id='transfer-type'> \
+              <div class='option' onclick='toggleTransferDestination=1; toggle(this)'>Trended</div><div class='option' onclick='toggleTransferDestination=2; toggle(this)'>Bank</div> \
+            </div> \
             <label>Amount</label><input type='text' placeholder='$0.00' style='text-align:center' spellcheck='false' autocomplete='off' maxlength='40' id='transfer-amount'> \
-            <input type='submit' value='Transfer'> \
+            <input type='submit' value='Initiate'> \
           </form> \
         </div> \
       </div> \
@@ -120,7 +141,7 @@
     post("/resources/ajax/functions.php", {"func": "updateAccount", "email": email, "fullname": fullname, "username": username, "bio": bio}, function(r) {
       r = JSON.parse(r)
       if (r['status'] == "ok") {
-        
+        document.getElementById("header-account").href = "/user/" + r['username'] + "/"
       }
       addAlert(r['message'])
     })
@@ -133,11 +154,44 @@
     post("/resources/ajax/functions.php", {"func": "addBank", "routing": routing, "account": account}, function(r) {
       r = JSON.parse(r)
       addAlert(r['message'])
+      if (r['status'] == 'ok') {
+        setTimeout(function() {
+          location.reload()
+        }, 1500)
+      }
     })
   }
 
-  function transfer() {
+  var toggleRemoveAccount = 0
+  function removeBank() {
+    var routing = document.getElementById("bank-routing").value
+    var account = document.getElementById("bank-account").value
 
+    post("/resources/ajax/functions.php", {"func": "removeBank", "account": toggleRemoveAccount}, function(r) {
+      r = JSON.parse(r)
+      addAlert(r['message'])
+      if (r['status'] == 'ok') {
+        setTimeout(function() {
+          location.reload()
+        }, 1500)
+      }
+    })
+  }
+
+  var toggleTransferDestination = 0
+  var toggleTransferAccount = 0
+  function transfer() {
+    var amount = document.getElementById("transfer-amount").value
+
+    post("/resources/ajax/functions.php", {"func": "transfer", "destination": toggleTransferDestination, "account": toggleTransferAccount, "amount": amount}, function(r) {
+      r = JSON.parse(r)
+      addAlert(r['message'])
+      if (r['status'] == 'ok') {
+        setTimeout(function() {
+          location.reload()
+        }, 1500)
+      }
+    })
   }
 </script>
 

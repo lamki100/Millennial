@@ -16,7 +16,7 @@ label {
   display: block;
   color: #999;
   text-align: left;
-  margin: 9px auto 7px;
+  margin: 11px 0 6px;
   padding-left: 2px;
 }
 
@@ -39,7 +39,7 @@ input[type='submit'] {
   padding-left: 17px;
   padding-right: 17px;
   margin-left: 10px;
-  margin-top: 4px;
+  margin-top: 10px;
   font-weight: 600;
   text-transform: uppercase;
   font-family: "Gotham";
@@ -55,36 +55,38 @@ input[type='submit']:active {
 .toggle {
   margin-bottom: 7px;
   -webkit-user-select: none;
+  display: flex;
+  justify-content: space-between;
 }
 
 .toggle .option {
   cursor: pointer;
   line-height: 1;
-  padding: 24px 20px;
+  padding: 22px 30px;
   text-align: center;
   min-width: 135px;
+  width: 100%;
   font-weight: 600;
   text-transform: uppercase;
-  background-color: #eee;
+  background-color: #f2f2f2;
   font-family: "Gotham";
   display: inline-block;
-  color: rgba(40,130,255,.9);
-  box-shadow: 0 1px 2px rgba(0,0,0,.17);
+  color: #444;
+  box-shadow: 0 1px 2px rgba(0,0,0,.2);
 }
 
 .toggle .option:active {
-  background-color: #ddd !important;
+  background-color: #ccc !important;
 }
 
 .toggle .selected, .toggle .selected:active {
-  background-color: rgba(40,130,255,.9) !important;
+  background-color: #4a4a4a !important;
   color: white;
 }
 
 h1 {
   margin-bottom: 5px;
-  font-size: 41px;
-  /*letter-spacing: -.5px;*/
+  font-size: 38px;
   line-height: 1;
   font-weight: 300;
   font-family: "Gotham";
@@ -92,7 +94,7 @@ h1 {
 }
 
 h2 {
-  margin-bottom: 28px;
+  margin-bottom: 27px;
   text-align: center;
   font-size: 20px;
   letter-spacing: -.1px;
@@ -101,13 +103,29 @@ h2 {
 }
 
 h3 {
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.5;
+}
+
+h4 {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 25px;
+  font-weight: 300;
+  font-family: "Gotham";
+}
+
+h5 {
+  margin-bottom: 5px;
+  font-size: 32px;
+  line-height: 1;
+  font-weight: 300;
+  font-family: "Gotham";
+  text-align: center;
 }
 
 p {
   line-height: 1.5;
-  /*letter-spacing: -.2px;*/
   text-align: center;
   margin-bottom: 10px;
 }
@@ -120,6 +138,10 @@ a {
 
 b {
   font-weight: 600;
+}
+
+i {
+  color: rgba(40,130,255,.8);
 }
 
 .error {
@@ -190,7 +212,8 @@ b {
 
 * { padding: 0; margin: 0; outline:0; border:0; border-radius:0; background:none; text-decoration:none; font:inherit; letter-spacing: inherit; -webkit-appearance: none; -moz-appearance: none; box-sizing: border-box; }
 
-#header, #master, #center { max-width: 950px; }
+#header { max-width: 950px; }
+#master, #center { max-width: 920px; }
 #master { margin: 0 auto; text-align: center;}
 
 body {
@@ -204,7 +227,7 @@ body {
 
 #header {
   margin: 0 auto;
-  padding: 14px 0 8px;
+  padding: 16px 0 10px;
   text-align: right;
 }
 
@@ -217,18 +240,29 @@ body {
 
 #header-logo {
   float: left;
-  font-family: "Aliens";
+  font-family: "Gotham";
+  font-weight: 600;
   line-height: 0;
-  font-size: 28px;
-  letter-spacing: 7px;
+  font-size: 25px;
+  letter-spacing: 4px;
   margin-top: 8px;
+}
+
+#header-balance {
+  float: left;
+  font-size: 19px;
+  font-weight: 300;
+  margin-top: 14px;
+  margin-left: 9px;
+  font-family: "Gotham";
+  letter-spacing: 1px;
 }
 
 #header-globe {
   vertical-align: middle;
   height: 48px;
-  margin-right: 9px;
-  margin-top: -7px;
+  margin-right: 13px;
+  margin-top: -9px;
 }
 
 #header-search {
@@ -239,22 +273,24 @@ body {
   height: 0;
   border: 0;
   background: url("/resources/images/search-black.png") left center no-repeat;
-  background-size: 45px;
-  padding: 28px;
+  background-size: 38px;
+  padding: 26px;
+  margin-top: -2px;
   cursor: pointer;
   transition: width .3s, padding-left .3s;
 }
 
 #header-account {
-  margin-left: 6px;
-  padding: 30px;
+  margin-left: 7px;
+  padding: 25px;
+  margin-top: 1px;
   background: url("/resources/images/account-black.png") center center no-repeat;
   background-size: contain;
 }
 
 #header-create {
-  margin: 27px 2px 0;
-  font-size: 81px;
+  margin: 22px 4px 0;
+  font-size: 72px;
   line-height: 0;
   font-weight: 300;
 }
@@ -269,7 +305,7 @@ body {
 
 #header-search:focus {
   width: 240px;
-  padding-left: 55px;
+  padding-left: 50px;
   cursor: auto;
 }
 
@@ -277,7 +313,7 @@ body {
   display: inline-block;
   position: absolute;
   z-index: 10;
-  margin-top: 69px;
+  margin-top: 63px;
   width: 255px;
   text-align: left;
   transition: height .3s, padding-top .3s;
@@ -297,24 +333,24 @@ body {
   position: relative;
   top: -10px;
   padding: 13px 17px;
-  margin-left: 23px;
-  margin-bottom: -3px;
+  margin-left: 30px;
+  margin-bottom: -4px;
   font-size: 13px;
 }
 
 .user-picture {
   /*border: none !important;*/
   display: inline-block !important;
-  margin: 0 0 0 0px !important;
+  /*margin: 0 0 0 0px !important;*/
 }
 
 .user-text {
   display: inline-block !important;
   vertical-align: middle;
-  margin-left: 35px;
+  margin-left: 30px;
   text-align: justify;
-  max-width: 37%;
-  margin-top: 4px;
+  /*max-width: 37%;*/
+  /*margin-top: 4px;*/
 }
 
 
@@ -339,16 +375,14 @@ body {
   padding: 23px 19px;
   display: block;
   font-weight: 300;
-  /*font-family: "Gotham";*/
   text-decoration: none;
-  border-left: 4px solid transparent;
-  /*font-size: 14px;*/
+  border-left: 3px solid transparent;
   color: #222;
 }
 
 #sidebar #options .selected {
-  background-color: #f9f9f9;
-  border-color: #444;
+  background-color: #f8f8f8;
+  border-color: #000;
 }
 
 #sidebar #options .option:active {
@@ -364,7 +398,7 @@ body {
 .box {
   box-shadow: 0 1px 2px rgba(0,0,0,.2);
   background-color: white;
-  margin-bottom: 21px;
+  margin-bottom: 17px;
 }
 
 .padding {
@@ -401,8 +435,8 @@ body {
   display: flex;
   align-items: center;
   position: absolute;
-  top: 83px;
-  bottom: 30px;
+  top: 78px;
+  bottom: 10px;
   overflow: hidden;
   width: 100%;
   text-align: center;
@@ -435,6 +469,43 @@ body {
   pointer-events: none;
   background: none;
   position: fixed;
+  z-index: 20;
   bottom: 10px;
   right: 20px;
+}
+
+#footer {
+  height: 60px;
+  display: block;
+}
+
+.popup {
+  background-color: rgba(0,0,0,.8);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+
+.popup-box {
+  background-color: #fafafa;
+  padding: 60px 50px;
+  border-radius: 3px;
+  box-shadow: 0px 5px 20px rgba(0,0,0,.2);
+}
+
+.activity {
+  font-size: 15px;
+  padding: 25px 0;
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+  display: block;
+}
+
+.activity:hover {
+  background-color: #f8f8f8;
 }
