@@ -5,7 +5,7 @@
   <?php
   $count = 0;
 
-  $query = $db->query("SELECT fullname, title, bets.id FROM bets INNER JOIN accounts ON bets.accountid = accounts.id LIMIT 7");
+  $query = $db->query("SELECT fullname, title, bets.id FROM bets INNER JOIN accounts ON bets.accountid = accounts.id ORDER BY time DESC LIMIT 7");
   while ($row = $query->fetch()) {
     $count += 1;
     echo "<a href='/bet/".$row['id']."' class='activity'><i>".$row['fullname']."</i> created <i>".$row['title']."</i></a>";
@@ -22,7 +22,7 @@
   <?php
   $count = 0;
 
-  $query = $db->query("SELECT fullname, amount, outcome, betid FROM participants INNER JOIN accounts ON participants.accountid = accounts.id LIMIT 7");
+  $query = $db->query("SELECT fullname, amount, outcome, betid FROM participants INNER JOIN accounts ON participants.accountid = accounts.id ORDER BY time DESC LIMIT 7");
   while ($row = $query->fetch()) {
     $count += 1;
     echo "<a href='/bet/".$row['betid']."' class='activity'><i>".$row['fullname']."</i> placed a <i>$".$row['amount']."</i> bet on <i>".$row['outcome']."</i></a>";

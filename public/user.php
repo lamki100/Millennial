@@ -36,13 +36,13 @@
   $count = 0;
 
   $accountid = $account['id'];
-  $query = $db->query("SELECT amount, outcome, betid FROM participants WHERE accountid='$accountid'");
+  $query = $db->query("SELECT amount, outcome, betid FROM participants WHERE accountid='$accountid' ORDER BY time DESC");
   while ($row = $query->fetch()) {
     $count += 1;
     echo "<a href='/bet/".$row['betid']."' class='activity'>Placed a <i>$".$row['amount']."</i> bet on <i>".$row['outcome']."</i></a>";
   }
 
-  $query = $db->query("SELECT title, id FROM bets WHERE accountid='$accountid'");
+  $query = $db->query("SELECT title, id FROM bets WHERE accountid='$accountid' ORDER BY time DESC");
   while ($row = $query->fetch()) {
     $count += 1;
     echo "<a href='/bet/".$row['id']."' class='activity'>Created <i>".$row['title']."</i></a>";

@@ -33,7 +33,7 @@
 
 <script>
 
-var outcome = null
+var outcome = 0
 
 function placeBet() {
   var amount = document.getElementById("bet-amount").value
