@@ -9,14 +9,14 @@
       login()
       setTimeout(function() {
         updateAccount()
-      }, 5000)
-    }, 5000)
+      }, 8000)
+    }, 8000)
   }
 
   function register() {
-    var email = "12343@test.com"
+    var email = "212@test.com"
     var fullname = "Testy Mctesterson"
-    var username = "t123"
+    var username = "t12343"
     var password = ""
     post("/resources/ajax/functions.php", {"func": "register", "email": email, "fullname": fullname, "username": username, "password": password}, function(r) {
       r = JSON.parse(r)
@@ -59,47 +59,47 @@
     })
   }
 
-  // function createBet() {
-  //   var title = document.getElementById("bet-title").value
-  //   var outcomeValues = []
-  //   for (var i = 0; i < outcomes.children.length; i++) outcomeValues.push(outcomes.children[i].value)
-  //
-  //   post("/resources/ajax/functions.php", {"func": "createBet", "title": title, "outcomes": outcomeValues.join(":")}, function(r) {
-  //     r = JSON.parse(r)
-  //     if (r['status'] == 'ok') {
-  //       window.location.href = r['path']
-  //     }
-  //     addAlert(r['message'])
-  //   })
-  // }
-  //
-  // function placeBet() {
-  //   var amount = document.getElementById("bet-amount").value
-  //
-  //   post("/resources/ajax/functions.php", {"func": "placeBet", "betid": 1, "outcome": outcome, "amount": amount}, function(r) {
-  //     r = JSON.parse(r)
-  //     addAlert(r['message'])
-  //     if (r['status'] == 'ok') {
-  //       setTimeout(function() {
-  //         location.reload()
-  //       }, 1500)
-  //     }
-  //   })
-  // }
-  //
-  // function transfer() {
-  //   var amount = document.getElementById("transfer-amount").value
-  //
-  //   post("/resources/ajax/functions.php", {"func": "transfer", "destination": toggleTransferDestination, "account": toggleTransferAccount, "amount": amount}, function(r) {
-  //     r = JSON.parse(r)
-  //     addAlert(r['message'])
-  //     if (r['status'] == 'ok') {
-  //       setTimeout(function() {
-  //         location.reload()
-  //       }, 1500)
-  //     }
-  //   })
-  // }
+  function createBet() {
+    var title = document.getElementById("bet-title").value
+    var outcomeValues = []
+    for (var i = 0; i < outcomes.children.length; i++) outcomeValues.push(outcomes.children[i].value)
+
+    post("/resources/ajax/functions.php", {"func": "createBet", "title": title, "outcomes": outcomeValues.join(":")}, function(r) {
+      r = JSON.parse(r)
+      if (r['status'] == 'failed') {
+        window.location.href = r['path']
+      }
+      addAlert(r['message'])
+    })
+  }
+
+  function placeBet() {
+    var amount = document.getElementById("bet-amount").value
+
+    post("/resources/ajax/functions.php", {"func": "placeBet", "betid": 1, "outcome": outcome, "amount": amount}, function(r) {
+      r = JSON.parse(r)
+      addAlert(r['message'])
+      if (r['status'] == 'failed') {
+        setTimeout(function() {
+          location.reload()
+        }, 1500)
+      }
+    })
+  }
+
+  function transfer() {
+    var amount = document.getElementById("transfer-amount").value
+
+    post("/resources/ajax/functions.php", {"func": "transfer", "destination": toggleTransferDestination, "account": toggleTransferAccount, "amount": amount}, function(r) {
+      r = JSON.parse(r)
+      addAlert(r['message'])
+      if (r['status'] == 'ok') {
+        setTimeout(function() {
+          location.reload()
+        }, 1500)
+      }
+    })
+  }
   //
   // function updateAccount() {
   //   var email = document.getElementById("account-email").value
